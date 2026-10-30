@@ -1,0 +1,1141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Ride the bus from USC to Diwali at BAPS Shri Swaminarayan Mandir in Chino Hills on Friday, November 6, 2026. $5 refundable deposit.">
+<meta property="og:title" content="Diwali at BAPS Chino Hills · USC bus">
+<meta property="og:description" content="Friday, November 6, 2026. Reserve a seat on the bus from USC with a $5 refundable deposit.">
+<meta property="og:image" content="/img/s01.jpg">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/png" href="/img/logo.png">
+<title>Diwali at BAPS Chino Hills</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+<style>
+/* Layout: a fixed photo slideshow sits behind everything; a white header carries the logo,
+   the hero floats over the photos, and a white sheet scrolls up over them with the details,
+   the sign-up panel and (for the organizer) the dashboard. Deliberately single-theme white. */
+:root{
+  --paper:#ffffff; --wash:#faf7f3; --ink:#1f1b17; --ink-2:#615950; --ink-3:#8c8379;
+  --line:#ebe4dc; --saffron:#f7941d; --saffron-ink:#a95608; --kumkum:#d71920;
+  --ok:#2e7a4c; --ok-bg:#eaf5ee; --warn:#9a6700; --warn-bg:#fdf3dc; --bad:#b42318; --bad-bg:#fdeceb; --info-bg:#f3eee8;
+  --serif:"Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --mono:ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --r:14px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-weight:400;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--saffron);outline-offset:2px}
+
+/* ---------- background slideshow ---------- */
+.bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:#2a1f2e}
+.bg .frame{position:absolute;inset:0}
+/* the incoming photo fades in on top while the outgoing one holds still underneath;
+   zoom only resets once a photo is fully hidden, so nothing ever jumps */
+.bg img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;opacity:0;z-index:0;transform:scale(1.03);transition:opacity .4s linear,transform 0s linear .5s;will-change:opacity,transform;backface-visibility:hidden}
+.bg img.on{opacity:1;z-index:2;transform:scale(1.12);transition:opacity 2.4s ease-in-out,transform 11s linear}
+.bg img.prev{opacity:1;z-index:1;transform:scale(1.12);transition:transform 11s linear}
+.bg .shade{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,rgba(18,10,24,.28),rgba(18,10,24,.38) 60%,rgba(18,10,24,.5))}
+@media (prefers-reduced-motion:reduce){.bg img,.bg img.on,.bg img.prev{transform:none}.bg img.on{transition:opacity 1.2s ease-in-out}}
+
+/* ---------- header ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.top-in{max-width:1680px;margin:0 auto;display:flex;align-items:center;gap:18px;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;min-width:0}
+.brand img{height:84px;width:auto;flex:none}
+.brand .bt{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+.brand .bt b{font-weight:400;font-size:21px;letter-spacing:.01em}
+.brand .bt span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+nav.nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+nav.nav a{text-decoration:none;font-size:16px;padding:6px 12px;border-radius:999px;color:var(--ink-2)}
+nav.nav a:hover{background:var(--wash);color:var(--ink)}
+nav.nav a.cta{border:1px solid var(--ink);color:var(--ink)}
+@media (max-width:720px){.brand img{height:64px}.brand .bt span{display:none}nav.nav a:not(.cta):not(.org){display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;z-index:1;color:#fff;text-align:center;padding-block:clamp(96px,18vh,190px) clamp(80px,14vh,150px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.hero-in{max-width:1680px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+.hero .eyebrow{opacity:.95;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.hero h1{font-weight:400;font-size:clamp(46px,8.4vw,108px);line-height:.98;letter-spacing:-.01em;margin:.18em 0 .22em;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.hero h1 i{font-style:italic;color:#ffd9a8}
+.hero p.lede{font-size:clamp(19px,2.2vw,24px);max-width:36ch;margin:0 auto 28px;font-style:italic;opacity:.95;text-shadow:0 1px 14px rgba(0,0,0,.4)}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:11px 22px;font-size:17px;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;text-decoration:none;letter-spacing:.01em;transition:background .2s,color .2s,border-color .2s}
+.btn:hover{background:#000}
+.btn.light{background:#fff;color:var(--ink);border-color:#fff}
+.btn.light:hover{background:#fff6ea}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--ink)}
+.hero .btn.ghost{color:#fff;border-color:rgba(255,255,255,.7)}
+.hero .btn.ghost:hover{background:rgba(255,255,255,.12)}
+.btn.sm{padding:6px 14px;font-size:15px}
+.btn.ok{background:var(--ok);border-color:var(--ok)}
+.btn.danger{background:#fff;color:var(--bad);border-color:#efc6c2}
+.btn.danger.arm{background:var(--bad);color:#fff;border-color:var(--bad)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.seats{margin:34px auto 0;max-width:360px;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.seats .lbl{font-size:15px;letter-spacing:.04em;display:flex;justify-content:space-between;gap:12px}
+.bar{height:3px;background:rgba(255,255,255,.3);border-radius:3px;margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:#ffd9a8;width:0;transition:width .8s ease}
+.dots{display:flex;gap:6px;margin-top:40px;flex-wrap:wrap;justify-content:center}
+.dots button{width:22px;height:3px;border:0;padding:0;background:rgba(255,255,255,.4);border-radius:2px;cursor:pointer}
+.dots button.on{background:#fff}
+
+/* ---------- white sheet ---------- */
+.sheet{position:relative;z-index:1;background:var(--paper)}
+#view-main .sheet{background:var(--paper)}
+#view-main .panel{background:#fff}
+.wrap{max-width:1680px;margin:0 auto;padding-left:max(clamp(16px,4vw,72px),env(safe-area-inset-left,0px));padding-right:max(clamp(16px,4vw,72px),env(safe-area-inset-right,0px))}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.facts>div{padding-block:28px;padding-right:20px;min-width:0}
+.facts>div+div{padding-left:20px;border-left:1px solid var(--line)}
+.facts .eyebrow{color:var(--saffron-ink);font-size:12px}
+.facts .v{font-size:21px;line-height:1.3;margin-top:6px}
+.facts .s{font-size:15px;color:var(--ink-2)}
+@media (max-width:860px){.facts{grid-template-columns:1fr 1fr}.facts>div:nth-child(3){padding-left:0;border-left:0}.facts>div:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:480px){.facts{grid-template-columns:1fr}.facts>div,.facts>div+div{padding-left:0;border-left:0}.facts>div+div{border-top:1px solid var(--line)}}
+
+.main-grid{padding-block:64px 24px;display:grid;gap:64px}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,96px);align-items:start}
+.split .list{margin:0}
+.split .prose p{max-width:46ch}
+.gal-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 40px;flex-wrap:wrap;margin-bottom:18px}
+.gal-head h2{margin:0}
+.gal-head .sub{margin:0}
+.signup-sec{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,96px);align-items:start;border-top:1px solid var(--line);padding-block:64px 88px}
+.signup-sec .panel{width:100%;max-width:640px;justify-self:start}
+.signup-intro{position:sticky;top:120px}
+.signup-intro .eyebrow{color:var(--saffron-ink);font-size:12px}
+.signup-intro h2{margin-top:8px}
+.signup-intro p{color:var(--ink-2);max-width:42ch}
+.si-facts{margin:24px 0;display:grid;gap:0;max-width:440px}
+.si-facts>div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.si-facts dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);padding-top:4px}
+.si-facts dd{margin:0}
+.si-note{font-style:italic}
+@media (max-width:960px){.split,.signup-sec{grid-template-columns:minmax(0,1fr);gap:24px}.signup-intro{position:static}.signup-sec .panel{max-width:none}.main-grid{gap:44px}}
+h2{font-weight:400;font-size:clamp(30px,3.4vw,40px);line-height:1.1;margin:0 0 14px;text-wrap:balance}
+h3{font-weight:400;font-size:23px;margin:0 0 8px}
+.prose p{max-width:62ch;margin:0 0 14px;color:var(--ink-2)}
+.list{list-style:none;padding:0;margin:0 0 36px;display:grid;gap:0}
+.list li{padding:14px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;color:var(--ink-2)}
+.list li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--saffron);margin-top:10px}
+.list li b{font-weight:400;color:var(--ink)}
+.steps{list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;counter-reset:s}
+.steps li{counter-increment:s;padding-top:14px;border-top:1px solid var(--ink);min-width:0}
+.steps li::before{content:counter(s);display:block;font-size:40px;line-height:1;color:var(--saffron-ink);margin-bottom:8px}
+.steps li p{margin:0;font-size:16px;color:var(--ink-2)}
+@media (max-width:1000px){.steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.steps{grid-template-columns:1fr 1fr}.steps li:last-child{grid-column:1/-1}}
+.how{padding-block:8px 64px}
+
+/* ---------- sign-up panel ---------- */
+.panel{border:1px solid var(--line);border-radius:var(--r);padding:28px;background:var(--paper);box-shadow:0 10px 40px rgba(40,25,10,.06)}
+
+@media (max-width:480px){.panel{padding:20px}}
+.panel .eyebrow{color:var(--saffron-ink);font-size:12px}
+.notice{font-size:15px;border-radius:10px;padding:12px 14px;background:var(--info-bg);color:var(--ink-2);margin:0 0 16px}
+.notice.bad{background:var(--bad-bg);color:var(--bad)}
+.notice.warn{background:var(--warn-bg);color:var(--warn)}
+.notice.ok{background:var(--ok-bg);color:var(--ok)}
+form.reg{display:grid;gap:14px;margin-top:14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:480px){.row2{grid-template-columns:1fr}}
+.field{display:grid;gap:5px;min-width:0}
+.field label,.lab{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.field input,.field select,.field textarea{width:100%;border:0;border-bottom:1px solid #d8d0c6;background:transparent;padding:8px 0;font-size:18px;border-radius:0;outline:none;transition:border-color .2s}
+.field textarea{resize:vertical;min-height:60px}
+.field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--saffron)}
+.field .hint{font-size:14px;color:var(--ink-3)}
+.field.err input,.field.err select{border-bottom-color:var(--bad)}
+.field .msg{font-size:14px;color:var(--bad)}
+.check{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;font-size:16px;color:var(--ink-2);align-items:start}
+.check input{width:18px;height:18px;margin-top:4px;accent-color:var(--ink)}
+.check.err{color:var(--bad)}
+.fs-title{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.seg button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 18px;font-size:17px;cursor:pointer;color:var(--ink-2);transition:background .2s,color .2s,border-color .2s}
+.seg button:hover{border-color:var(--ink)}
+.seg button[aria-checked="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sel{position:relative}
+.sel select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:36px!important}
+.sel::after{content:"";position:absolute;right:6px;top:50%;width:9px;height:9px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:translateY(-75%) rotate(45deg);pointer-events:none;transition:border-color .2s}
+.sel:focus-within::after{border-color:var(--saffron)}
+.guests{display:grid;gap:14px}
+.guests:empty{display:none}
+.total{font-size:17px;padding:12px 14px;background:var(--wash);border-radius:10px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.total b{font-weight:400;font-size:22px;font-variant-numeric:tabular-nums}
+.total .w{flex-basis:100%;font-size:15px;color:var(--warn)}
+.plus{font-size:14px;color:var(--saffron-ink);border:1px solid #f2d3ae;border-radius:999px;padding:1px 8px;vertical-align:middle;margin-left:4px}
+.tk{margin-top:14px}
+.tk canvas{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 40px rgba(40,25,10,.08)}
+.tk.used canvas{opacity:.55}
+.refcode{font-family:var(--mono);font-size:30px;letter-spacing:.08em;color:var(--ink);padding:14px 16px;border:1px dashed var(--saffron);border-radius:10px;background:#fffaf3;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.pay{display:grid;gap:10px;margin:16px 0}
+.pay-row{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:10px 0;flex-wrap:wrap}
+.pay-row .k{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.pay-row .val{font-family:var(--mono);font-size:16px;word-break:break-all}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;letter-spacing:.06em;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.chip.pending{background:var(--warn-bg);color:var(--warn)}
+.chip.confirmed{background:var(--ok-bg);color:var(--ok)}
+.chip.in{background:#e8eefc;color:#2848a8}
+.chip.waitlist{background:var(--info-bg);color:var(--ink-2)}
+.chip.cancelled{background:#f1f0ee;color:var(--ink-3)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+
+/* ticket */
+.ticket{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:12px}
+.ticket .t-head{padding:18px 22px;background:var(--wash);border-bottom:1px dashed #d6cbbd;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.ticket .t-head b{font-weight:400;font-size:22px;display:block;line-height:1.2}
+.ticket .t-head span{font-size:14px;color:var(--ink-2)}
+.ticket .t-qr{display:grid;place-items:center;padding:22px}
+.ticket canvas.qr{width:min(240px,100%);height:auto;image-rendering:pixelated}
+.ticket .t-meta{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.ticket .t-meta>div{padding:12px 22px;min-width:0}
+.ticket .t-meta>div+div{border-left:1px solid var(--line)}
+.ticket .t-meta .v{font-size:17px;overflow-wrap:anywhere}
+
+/* ---------- organizer ---------- */
+.org-view{padding-block:40px 80px;max-width:1400px}
+.org-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);margin-bottom:24px}
+.stats>div{padding:18px 20px;min-width:0}
+.stats>div+div{border-left:1px solid var(--line)}
+.stats .n{font-size:38px;line-height:1;font-variant-numeric:tabular-nums}
+.stats .n small{font-size:18px;color:var(--ink-3)}
+@media (max-width:720px){.stats{grid-template-columns:1fr 1fr}.stats>div:nth-child(3){border-left:0}.stats>div:nth-child(n+3){border-top:1px solid var(--line)}}
+details.settings{border:1px solid var(--line);border-radius:var(--r);margin-bottom:24px}
+details.settings summary{cursor:pointer;padding:16px 20px;font-size:19px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details.settings summary::after{content:"+";font-size:22px;line-height:1;color:var(--ink-3)}
+details.settings[open] summary::after{content:"–"}
+.settings-body{padding:4px 20px 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.settings-body .full{grid-column:1/-1}
+@media (max-width:760px){.settings-body{grid-template-columns:1fr}}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.tabs button{border:0;background:none;padding:10px 14px;font-size:18px;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button.on{color:var(--ink);border-bottom-color:var(--ink)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.toolbar input[type=search]{flex:1 1 220px;min-width:0;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:16px;background:#fff}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;font-size:15px;cursor:pointer;color:var(--ink-2)}
+.filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.switch{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--ink-2)}
+.rows{border-top:1px solid var(--line)}
+.r{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1.4fr) 120px 130px minmax(0,1.6fr);gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.r .nm{font-size:19px;line-height:1.2;overflow-wrap:anywhere}
+.r .sub{font-size:14px;color:var(--ink-3)}
+.r .ct{font-size:15px;color:var(--ink-2);overflow-wrap:anywhere}
+.r .ref{font-family:var(--mono);font-size:14px}
+.r .acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.r.cancelled{opacity:.6}
+.r .rowmsg{grid-column:1/-1;font-size:14px}
+@media (max-width:900px){.r{grid-template-columns:minmax(0,1fr) auto}.r .ct,.r .ref{grid-column:1/-1}.r .acts{grid-column:1/-1;justify-content:flex-start}}
+.empty{padding:40px 0;color:var(--ink-3);text-align:center}
+.ci{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}
+@media (max-width:760px){.ci{grid-template-columns:1fr}}
+.ci-result{border:1px solid var(--line);border-radius:var(--r);padding:20px;min-height:140px}
+.filebtn{position:relative;overflow:hidden}
+.filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer}
+
+/* ---------- past photos ---------- */
+.gallery-sec{margin:8px 0 40px}
+.gallery-sec .sub{color:var(--ink-2);margin:0 0 18px;max-width:60ch}
+.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,15vw,260px);grid-auto-flow:dense;gap:8px}
+.gallery button{position:relative;border:0;padding:0;margin:0;border-radius:10px;overflow:hidden;cursor:zoom-in;background:var(--wash);min-width:0}
+.gallery button.big{grid-column:span 2;grid-row:span 2}
+.gallery button.tall{grid-row:span 2}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .4s}
+.gallery button::after{content:attr(data-cap);position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;color:#fff;font-size:14px;font-style:italic;text-align:left;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.6));opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.gallery button:hover img,.gallery button:focus-visible img{transform:scale(1.06)}
+.gallery button:hover::after,.gallery button:focus-visible::after{opacity:1;transform:none}
+@media (max-width:900px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:150px}}
+@media (max-width:600px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:120px}.gallery button.big{grid-column:span 2}}
+.lb{position:fixed;inset:0;z-index:60;background:rgba(18,13,10,.94);display:grid;grid-template-rows:1fr auto;padding:calc(env(safe-area-inset-top,0px) + 56px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 18px) max(16px,env(safe-area-inset-left,0px));animation:lbin .3s ease both}
+@keyframes lbin{from{opacity:0}to{opacity:1}}
+.lb figure{margin:0;display:grid;place-items:center;min-height:0}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;transition:opacity .3s}
+.lb .lb-cap{color:#f3eadf;text-align:center;font-style:italic;font-size:17px;padding-top:12px}
+.lb .lb-cap span{font-style:normal;font-size:12px;letter-spacing:.2em;opacity:.7;margin-right:10px}
+.lb button{position:absolute;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;width:46px;height:46px;font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.lb button:hover{background:rgba(255,255,255,.2)}
+.lb .x{top:calc(env(safe-area-inset-top,0px) + 10px);right:max(16px,env(safe-area-inset-right,0px))}
+.lb .pv{left:max(16px,env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
+.lb .nx{right:max(16px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
+@media (max-width:600px){.lb .pv,.lb .nx{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 60px);transform:none}}
+
+/* ---------- motion ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.hero .a{animation:rise 1s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
+.hero-in{will-change:transform,opacity}
+.count{display:flex;justify-content:center;gap:clamp(14px,4vw,34px);margin:34px auto 0;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.count>div{display:grid;justify-items:center;min-width:56px}
+.count b{font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1;font-variant-numeric:tabular-nums}
+.count span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.85;margin-top:6px}
+.count-lbl{font-size:15px;font-style:italic;opacity:.9;margin-top:10px;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.cap{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:18px;z-index:2;color:#fff;font-size:15px;font-style:italic;text-align:right;text-shadow:0 1px 10px rgba(0,0,0,.6);transition:opacity .6s;max-width:calc(100% - 32px)}
+.cap .n{font-style:normal;font-size:12px;letter-spacing:.2em;margin-right:8px;opacity:.8;font-variant-numeric:tabular-nums}
+.cap.fade{opacity:0}
+header.top .brand img{transition:height .35s ease}
+header.top.scrolled .brand img{height:58px}
+header.top.scrolled{box-shadow:0 6px 24px rgba(30,20,10,.06)}
+.btn{transition:background .2s,color .2s,border-color .2s,transform .2s,box-shadow .2s}
+.btn:not([disabled]):hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.14)}
+.list li{transition:padding .3s ease,color .3s}
+.list li::before{transition:transform .3s ease,background .3s}
+.list li:hover{padding-left:6px;color:var(--ink)}
+.list li:hover::before{transform:scale(1.6);background:var(--kumkum)}
+.steps li{transition:border-color .3s,transform .3s}
+.steps li:hover{border-top-color:var(--saffron);transform:translateY(-4px)}
+.facts>div{transition:background .3s}
+.facts>div:hover{background:var(--wash)}
+#panel.enter{animation:pop .6s cubic-bezier(.2,.7,.2,1) both}
+.chip.pending::before{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{animation:lift linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
+  }
+}
+@keyframes lift{from{transform:translateY(16px)}to{transform:none}}
+@media (max-width:720px){.reveal{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.hero .a,#panel.enter{animation:none}.chip.pending::before{animation:none}.btn:hover,.steps li:hover{transform:none}}
+@media (max-width:720px){header.top.scrolled .brand img{height:50px}.cap{bottom:12px;font-size:13px}}
+footer.foot{border-top:1px solid var(--line);padding-block:36px 48px;color:var(--ink-2);font-size:15px}
+.foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot b{font-weight:400;color:var(--ink);font-size:18px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:16px;opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:calc(100% - 32px)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+/* ---------- phone layout ---------- */
+.show-sm{display:none}
+@media (max-width:720px){.hide-sm{display:none}.show-sm{display:inline}}
+nav.nav a{white-space:nowrap}
+@media (max-width:720px){
+  body{font-size:16px;line-height:1.5}
+  .top-in{gap:10px;padding-block:8px}
+  .brand{gap:10px}
+  .brand img{height:46px}
+  header.top.scrolled .brand img{height:38px}
+  .brand .bt b{font-size:17px;white-space:nowrap}
+  nav.nav a.cta{font-size:14px;padding:6px 14px}
+  nav.nav a.org{font-size:14px;padding:6px 10px}
+  .hero{padding-block:72px 64px}
+  .hero .eyebrow{font-size:11px;letter-spacing:.18em}
+  .hero h1{font-size:clamp(40px,12vw,56px);margin:.25em 0 .3em}
+  .hero p.lede{font-size:17px;margin-bottom:22px}
+  .hero-actions{flex-direction:column;align-items:stretch;max-width:320px;margin:0 auto;gap:10px}
+  .hero-actions .btn{width:100%}
+  .count{gap:10px;margin-top:28px}
+  .count>div{min-width:52px}
+  .count b{font-size:30px}
+  .count span{font-size:10px;letter-spacing:.16em}
+  .count-lbl{font-size:14px}
+  .seats{margin-top:24px;max-width:280px}
+  .seats .lbl{font-size:13px}
+  .dots{margin-top:26px}
+  .dots button{width:14px}
+  .cap{font-size:12px;left:16px;right:16px;text-align:center;bottom:10px}
+  .cap .n{display:none}
+  .facts>div{padding-block:18px}
+  .facts .v{font-size:18px}
+  .facts .s{font-size:14px}
+  h2{font-size:26px;margin-bottom:10px}
+  h3{font-size:20px}
+  .main-grid{padding-block:36px 8px}
+  .prose p{font-size:16px}
+  .list{margin-bottom:28px}
+  .list li{padding:11px 0;grid-template-columns:20px minmax(0,1fr);gap:8px;font-size:16px}
+  .list li::before{margin-top:9px;width:7px;height:7px}
+  .gallery-sec{margin:4px 0 32px}
+  .gallery-sec .sub{font-size:15px;margin-bottom:14px}
+  .gallery{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:92px;gap:5px}
+  .gallery button{border-radius:7px}
+  .gallery button.big{grid-column:span 2;grid-row:span 2}
+  .gallery button.tall{grid-row:auto}
+  .gallery button::after{display:none}
+  .how{padding-block:4px 40px}
+  .steps{gap:16px 14px}
+  .steps li::before{font-size:30px;margin-bottom:4px}
+  .steps li p{font-size:15px}
+  .signup-sec{padding-top:36px;padding-bottom:56px}
+  .panel{padding:20px 18px;border-radius:12px}
+  .field label,.lab{font-size:11px}
+  .field input,.field select,.field textarea{font-size:17px}
+  .total{font-size:15px}
+  .total b{font-size:20px}
+  .check{font-size:15px}
+  form.reg .actions .btn{width:100%}
+  .refcode{font-size:24px}
+  footer.foot{padding-block:28px 40px;font-size:14px}
+  .foot b{font-size:16px}
+}
+@media (max-width:380px){
+  .brand .bt{display:none}
+  .count b{font-size:26px}
+  .gallery{grid-auto-rows:80px}
+}
+
+/* ---------- page basics (the hosted page has no wrapper) ---------- */
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+[hidden]{display:none!important}
+.linkbtn{background:none;border:0;padding:0;color:var(--saffron-ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font:inherit;font-size:15px}
+.lost{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
+.lost-form{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.lost-form input{flex:1 1 220px;min-width:0;border:0;border-bottom:1px solid #d8d0c6;padding:8px 0;font:inherit;font-size:16px;background:transparent;outline:none}
+.lost-form input:focus{border-bottom-color:var(--saffron)}
+.hint-line{font-size:14px;color:var(--ink-3);margin:12px 0 0}
+.login{max-width:440px;margin:40px auto}
+.scan{position:relative;margin-top:14px;border-radius:14px;overflow:hidden;background:#111;aspect-ratio:1;max-width:420px}
+.scan video{width:100%;height:100%;object-fit:cover;display:block}
+.scan::after{content:"";position:absolute;inset:18%;border:2px solid rgba(255,255,255,.85);border-radius:16px;box-shadow:0 0 0 999px rgba(0,0,0,.25)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#">
+      <img src="img/logo.png" alt="BAPS" width="388" height="500">
+      <span class="bt"><b>Diwali at the Mandir</b><span>USC student trip · Nov 6</span></span>
+    </a>
+    <nav class="nav">
+      <a href="#details">Details</a>
+      <a href="#photos">Photos</a>
+      <a href="#guide">Before you go</a>
+      <a href="#signup" class="cta" id="nav-cta"><span class="hide-sm">Reserve a seat</span><span class="show-sm">Reserve</span></a>
+      <a href="#organizer" class="org" id="nav-org" hidden>Organizer</a>
+    </nav>
+  </div>
+</header>
+
+<div id="view-main">
+  <section class="hero">
+    <div class="bg" id="bg" aria-hidden="true"><div class="frame">
+  <img src="img/s01.jpg" alt="">
+  <img data-src="img/s02.jpg" alt=""><img data-src="img/s03.jpg" alt=""><img data-src="img/s04.jpg" alt="">
+  <img data-src="img/s05.jpg" alt=""><img data-src="img/s06.jpg" alt=""><img data-src="img/s07.jpg" alt="">
+  <img data-src="img/s08.jpg" alt=""><img data-src="img/s09.jpg" alt=""><img data-src="img/s10.jpg" alt="">
+  <img data-src="img/s11.jpg" alt=""><img data-src="img/s12.jpg" alt="">
+  <div class="shade"></div>
+</div></div>
+    <div class="hero-in" id="hero-in">
+      <div class="eyebrow a" style="--d:.1s">USC student trip · Friday, November 6, 2026</div>
+      <h1 class="a" style="--d:.25s">Diwali at BAPS<br><i>Chino Hills</i></h1>
+      <p class="lede a" style="--d:.45s">An evening of lights, decorations and celebration at the BAPS Shri Swaminarayan Mandir.</p>
+      <div class="hero-actions a" style="--d:.6s">
+        <a class="btn light" href="#signup">Reserve a seat · $5 refundable</a>
+        <a class="btn ghost" href="#details">Event details</a>
+      </div>
+      <div class="a" style="--d:.75s">
+        <div class="count" id="count" aria-live="off">
+          <div><b id="cd-d">0</b><span>Days</span></div><div><b id="cd-h">00</b><span>Hours</span></div><div><b id="cd-m">00</b><span>Minutes</span></div><div><b id="cd-s">00</b><span>Seconds</span></div>
+        </div>
+        <div class="count-lbl" id="cd-lbl">until Friday, November 6</div>
+      </div>
+      <div class="seats a" id="seats" style="--d:.9s">
+        <div class="lbl"><span id="seat-text">Bus seats</span><span id="seat-left"></span></div>
+        <div class="bar"><i id="seat-bar"></i></div>
+      </div>
+      <div class="dots" id="dots" hidden></div>
+    </div>
+    <div class="cap" id="cap"><span class="n" id="cap-n">01 / 12</span><span id="cap-t"></span></div>
+  </section>
+
+  <main class="sheet">
+    <div class="wrap">
+      <div class="facts" id="details">
+        <div class="reveal"><div class="eyebrow">When</div><div class="v">Friday, Nov 6, 2026</div><div class="s">Evening celebration</div></div>
+        <div class="reveal"><div class="eyebrow">Bus from USC</div><div class="v" id="f-bus">Departure time TBA</div><div class="s" id="f-pickup">Pickup spot to be announced</div></div>
+        <div class="reveal"><div class="eyebrow">Mandir</div><div class="v">BAPS Shri Swaminarayan Mandir</div><div class="s">15100 Fairfield Ranch Road, Chino Hills, CA 91709</div></div>
+        <div class="reveal"><div class="eyebrow">Deposit</div><div class="v" id="f-dep">$5, fully refundable</div><div class="s" id="f-dep-s">Back to you when you board the bus</div></div>
+      </div>
+
+      <div class="main-grid">
+        <section class="split">
+          <div class="split-l">
+            <h2>A night of a thousand lights</h2>
+            <div class="prose">
+              <p>BAPS is inviting USC students to celebrate Diwali at its mandir in Chino Hills. We're running a bus from campus so you can see the hand-carved mandir lit up after sunset and spend the evening with the community.</p>
+              <p>Diwali and Annakut celebrations at BAPS mandirs usually include:</p>
+            </div>
+          </div>
+          <ul class="list split-r">
+            <li class="reveal"><span><b>The mandir in light.</b> The stone shikhars and courtyard are illuminated in color once the sun goes down.</span></li>
+            <li class="reveal"><span><b>The Annakut.</b> Hundreds of vegetarian sweets and dishes arranged as an offering before the murtis to welcome the Hindu New Year.</span></li>
+            <li class="reveal"><span><b>Rangoli and decorations.</b> Large designs, floating diyas and festival displays throughout the grounds.</span></li>
+            <li class="reveal"><span><b>Performances and activities.</b> Cultural dances, exhibits and festival activities in the halls.</span></li>
+          </ul>
+        </section>
+
+        <section class="gallery-sec" id="photos">
+          <div class="gal-head"><h2>From past Diwali celebrations</h2><p class="sub">A look at previous years at the Chino Hills mandir. Tap a photo to see it larger.</p></div>
+          <div class="gallery" id="gallery"></div>
+        </section>
+
+        <section class="split">
+          <div class="split-l">
+            <h2 id="guide">Before you go</h2>
+            <div class="prose"><p>The mandir is a place of worship, so a few simple guidelines help everyone enjoy the evening.</p></div>
+          </div>
+          <ul class="list split-r">
+            <li class="reveal"><span><b>Dress modestly.</b> Shoulders and knees covered. Traditional Indian clothes are welcome but not required.</span></li>
+            <li class="reveal"><span><b>Shoes come off</b> before you enter the mandir. Shoe racks are provided.</span></li>
+            <li class="reveal"><span><b>Keep it quiet inside.</b> Photography isn't allowed in the main mandir hall; follow the volunteers' guidance.</span></li>
+            <li class="reveal"><span><b>Nothing non-vegetarian.</b> Don't bring meat, eggs or alcohol onto the grounds.</span></li>
+            <li class="reveal"><span><b>Be at the pickup spot 10 minutes early.</b> The bus leaves on time, and your QR ticket is checked as you board.</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="how">
+        <h2>How your ticket works</h2>
+        <ol class="steps">
+          <li class="reveal"><h3>Register</h3><p>Fill in the form with your name, email and phone. You get a reference code right away.</p></li>
+          <li class="reveal"><h3>Send $5</h3><p>Pay the deposit by Venmo or Zelle and put your reference code in the payment note.</p></li>
+          <li class="reveal"><h3>We confirm</h3><p>The organizer matches your payment to your reference code and approves your seat.</p></li>
+          <li class="reveal"><h3>Get your QR</h3><p>Your QR ticket appears on this page and in your email. Show it when you board.</p></li>
+          <li class="reveal"><h3>Get your $5 back</h3><p>Once you're checked in on the bus, we refund your deposit to the account you chose.</p></li>
+        </ol>
+      </section>
+
+      <section class="signup-sec">
+        <div class="signup-intro">
+          <div class="eyebrow">Reserve your seat</div>
+          <h2>Save your spot on the bus</h2>
+          <p id="si-seats">Seats are limited, so sign up early.</p>
+          <dl class="si-facts">
+            <div><dt>Date</dt><dd>Friday, November 6, 2026</dd></div>
+            <div><dt>Bus leaves USC</dt><dd id="si-depart">Time to be announced</dd></div>
+            <div><dt>Pickup</dt><dd id="si-pickup">To be announced</dd></div>
+            <div><dt>Deposit</dt><dd id="si-dep">$5 per person, fully refundable</dd></div>
+          </dl>
+          <p class="si-note" id="si-contact"></p>
+        </div>
+        <div class="panel" id="signup" aria-live="polite">
+          <div id="panel"></div>
+        </div>
+      </section>
+    </div>
+    <footer class="foot">
+      <div class="wrap foot-in">
+        <div><b>BAPS Shri Swaminarayan Mandir</b><br>15100 Fairfield Ranch Road, Chino Hills, CA 91709<br>+1 (909) 614-5000</div>
+        <div style="max-width:42ch">Bus trip and sign-ups organized by USC students. This page isn't run by BAPS. <span id="foot-contact"></span></div>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<div id="view-org" hidden>
+  <main class="sheet" style="min-height:100%">
+    <div class="wrap org-view" id="org"></div>
+  </main>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <figure><img id="lb-img" alt=""></figure>
+  <div class="lb-cap" id="lb-cap"></div>
+  <button class="x" id="lb-x" aria-label="Close">×</button>
+  <button class="pv" id="lb-p" aria-label="Previous photo">‹</button>
+  <button class="nx" id="lb-n" aria-label="Next photo">›</button>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const DEF = {capacity:50, deposit:5, venmo:"", zelle:"", pickup:"", depart:"", ret:"", contact:"", contactPhone:"", policy:"", confirmed:0, open:true};
+const S = {info:{...DEF}, reg:null, token:null, ready:false, editing:false, fg:[], infoError:null,
+  key:null, regs:[], settings:null, emailReady:false, filter:"all", q:"", tab:"list", emailOnConfirm:true, busy:new Set(), rowMsg:{}};
+
+/* ---------------- toast & helpers ---------------- */
+let tt; function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("show"); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("show"),2800); }
+function rand(n, alpha="ABCDEFGHJKMNPQRSTUVWXYZ23456789"){ const a=new Uint32Array(n); crypto.getRandomValues(a); return [...a].map(x=>alpha[x%alpha.length]).join(""); }
+function copy(text, el){ try{ navigator.clipboard.writeText(text).then(()=>toast("Copied"),()=>sel(el)); }catch{ sel(el); } }
+function sel(el){ if(!el) return; const r=document.createRange(); r.selectNodeContents(el); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast("Selected. Press copy on your keyboard."); }
+function fmtDate(v){ if(!v) return ""; const d=new Date(v); if(isNaN(d)) return ""; return d.toLocaleDateString(undefined,{month:"short",day:"numeric"})+" "+d.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"}); }
+function armButton(btn, fn){ if(btn.classList.contains("arm")){ fn(); return; } const old=btn.textContent; btn.classList.add("arm"); btn.textContent="Click again to confirm"; setTimeout(()=>{ btn.classList.remove("arm"); btn.textContent=old; },4000); }
+
+/* ---------------- slideshow ---------------- */
+const imgs=[...document.querySelectorAll("#bg img")]; let cur=0, timer;
+const dots=$("#dots");
+imgs.forEach((_,i)=>{ const b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label","Show photo "+(i+1)); if(!i) b.className="on"; b.onclick=()=>{go(i); restart();}; dots.appendChild(b); });
+function load(i){ const im=imgs[i]; if(im && !im.src && im.dataset.src) im.src=im.dataset.src; }
+const CAPS=["The mandir at sunset, lit for Diwali","Shikhars glowing pink as the fireworks begin","The laser show across the mandir","Crowds fill the courtyard after dark","The courtyard rangoli by night","The Annakut offering before the murtis","Floating diyas on the water","A festival rangoli of two elephants","Children performing a folk dance","Stories and performances in the hall","Rides and games at the festival","An animated exhibit for families"];
+const capEl=$("#cap"), capN=$("#cap-n"), capT=$("#cap-t"); capT.textContent=CAPS[0];
+function setCap(i){ capEl.classList.add("fade"); setTimeout(()=>{ capN.textContent=String(i+1).padStart(2,"0")+" / "+imgs.length; capT.textContent=CAPS[i]||""; capEl.classList.remove("fade"); },500); }
+let prevT, pending=-1;
+function ready(im){ return (im.complete && im.naturalWidth) ? Promise.resolve() : (im.decode ? im.decode().catch(()=>{}) : new Promise(r=>{ im.onload=im.onerror=r; })); }
+function go(i){
+  if(i===cur || i===pending) return; pending=i; const next=imgs[i]; load(i);
+  ready(next).then(()=>{
+    if(pending!==i) return; pending=-1;
+    const old=imgs[cur];
+    imgs.forEach(im=>{ if(im!==old && im!==next) im.classList.remove("prev"); });
+    old.classList.remove("on"); old.classList.add("prev");
+    next.classList.remove("prev"); next.classList.add("on");
+    dots.children[cur].classList.remove("on"); dots.children[i].classList.add("on"); cur=i; setCap(i);
+    clearTimeout(prevT); prevT=setTimeout(()=>old.classList.remove("prev"), 2600);
+    load((i+1)%imgs.length);
+  });
+}
+function restart(){ clearInterval(timer); timer=setInterval(()=>{ if(!document.hidden) go((cur+1)%imgs.length); }, 7000); }
+ready(imgs[0]).then(()=>requestAnimationFrame(()=>requestAnimationFrame(()=>imgs[0].classList.add("on"))));
+window.addEventListener("load",()=>{ load(1); load(2); }); restart();
+
+/* ---------------- past photos gallery ---------------- */
+(function gallery(){
+  const ORDER=[0,5,2,6,7,1,8,3,10,4,9,11], SHAPE={0:"big",6:"tall",3:"big",9:"tall"};
+  const g=$("#gallery"), lb=$("#lb"), li=$("#lb-img"), lc=$("#lb-cap"); let at=0, lastFocus=null;
+  ORDER.forEach((k,pos)=>{ const b=document.createElement("button"); b.type="button"; b.className=SHAPE[k]||""; b.dataset.cap=CAPS[k];
+    b.setAttribute("aria-label","View photo: "+CAPS[k]); const im=document.createElement("img"); im.src=imgs[k].dataset.src||imgs[k].getAttribute("src"); im.alt=CAPS[k]; im.loading="lazy"; im.decoding="async";
+    b.appendChild(im); b.onclick=()=>open(pos); g.appendChild(b); });
+  function show(pos){ at=(pos+ORDER.length)%ORDER.length; const k=ORDER[at]; li.style.opacity=0;
+    const src=imgs[k].dataset.src||imgs[k].getAttribute("src"); const tmp=new Image(); tmp.src=src;
+    (tmp.decode?tmp.decode():Promise.resolve()).catch(()=>{}).then(()=>{ li.src=src; li.alt=CAPS[k]; li.style.opacity=1; });
+    lc.innerHTML=`<span>${String(at+1).padStart(2,"0")} / ${ORDER.length}</span>`; lc.appendChild(document.createTextNode(CAPS[k])); }
+  function open(pos){ lastFocus=document.activeElement; lb.hidden=false; document.body.style.overflow="hidden"; show(pos); $("#lb-x").focus(); }
+  function close(){ lb.hidden=true; document.body.style.overflow=""; if(lastFocus) lastFocus.focus(); }
+  $("#lb-x").onclick=close; $("#lb-p").onclick=()=>show(at-1); $("#lb-n").onclick=()=>show(at+1);
+  lb.addEventListener("click",e=>{ if(e.target===lb || e.target.tagName==="FIGURE") close(); });
+  addEventListener("keydown",e=>{ if(lb.hidden) return; if(e.key==="Escape") close(); if(e.key==="ArrowLeft") show(at-1); if(e.key==="ArrowRight") show(at+1); });
+  let sx=null; lb.addEventListener("touchstart",e=>{ sx=e.touches[0].clientX; },{passive:true});
+  lb.addEventListener("touchend",e=>{ if(sx==null) return; const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) show(at+(dx<0?1:-1)); sx=null; });
+})();
+
+/* ---------------- countdown ---------------- */
+function targetTime(){ const m=String(S.info.depart||"").match(/(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m/i);
+  if(m){ let h=+m[1]%12; if(/p/i.test(m[3])) h+=12; return {t:Date.UTC(2026,10,6,h+8,+(m[2]||0)), lbl:"until the bus leaves USC"}; } // Nov 6 is PST (UTC-8)
+  return {t:Date.UTC(2026,10,6,8,0), lbl:"until Friday, November 6"}; }
+const cd={d:$("#cd-d"),h:$("#cd-h"),m:$("#cd-m"),s:$("#cd-s"),l:$("#cd-lbl")}; let cdLast="";
+function tick(){ const {t,lbl}=targetTime(); let ms=t-Date.now();
+  if(ms<=0){ $("#count").hidden=true; cd.l.textContent = Date.now() < Date.UTC(2026,10,7,8) ? "Happy Diwali! The celebration is today." : "Thank you for celebrating with us."; return; }
+  const sec=Math.floor(ms/1000), v=[Math.floor(sec/86400), Math.floor(sec%86400/3600), Math.floor(sec%3600/60), sec%60];
+  cd.d.textContent=v[0]; cd.h.textContent=String(v[1]).padStart(2,"0"); cd.m.textContent=String(v[2]).padStart(2,"0"); cd.s.textContent=String(v[3]).padStart(2,"0");
+  if(cdLast!==lbl){ cd.l.textContent=lbl; cdLast=lbl; } }
+tick(); setInterval(tick,1000);
+
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------------- header + hero on scroll ---------------- */
+const hdr=$("header.top"), heroIn=$("#hero-in"); let sTick=false;
+addEventListener("scroll",()=>{ if(sTick) return; sTick=true; requestAnimationFrame(()=>{ sTick=false; const y=scrollY;
+  hdr.classList.toggle("scrolled", y>40);
+   }); },{passive:true});
+
+/* ---------------- seat counter tween ---------------- */
+let seatShown=0, seatAnim;
+function tweenSeats(to, cap){ cancelAnimationFrame(seatAnim); const from=seatShown, t0=performance.now(), dur=reduce?0:900;
+  const step=now=>{ const k=dur?Math.min(1,(now-t0)/dur):1, e=1-Math.pow(1-k,3), v=Math.round(from+(to-from)*e); seatShown=v;
+    $("#seat-text").textContent=`${v} of ${cap} bus seats confirmed`; if(k<1) seatAnim=requestAnimationFrame(step); };
+  seatAnim=requestAnimationFrame(step); }
+
+/* ---------------- groups ---------------- */
+const MAXG=3;
+const party = r => 1 + ((r && Array.isArray(r.guests)) ? r.guests.length : 0);
+const dep = () => (S.info.deposit===0 ? 0 : (+S.info.deposit||5));
+const seatsLeft = () => Math.max(0,(+S.info.capacity||50)-(+S.info.confirmed||0));
+const DEFAULT_POLICY="You get it back when you check in on the bus, or if you cancel by Thursday, Nov 5.";
+const policyText = () => (S.info.policy||"").trim() || DEFAULT_POLICY;
+const RM={same:"Same account I pay from",venmo:"Venmo",zelle:"Zelle",paypal:"PayPal"};
+const RM_PH={venmo:"@username",zelle:"Email or phone on Zelle",paypal:"PayPal email"};
+const refundLine = r => { const f=r&&r.refund; if(!f||!f.method||f.method==="same") return "Same account they paid from"; return `${RM[f.method]||f.method} ${f.handle||""}`.trim(); };
+const groupLine = r => (r.guests&&r.guests.length) ? "with "+r.guests.join(", ") : "";
+
+/* ---------------- QR + ticket image ---------------- */
+function qrPayload(reg, t){ return `DIW26:${reg.ref}:${t.code}`; }
+function drawQR(ctx, text, x, y, size){
+  const q=qrcode(0,"M"); q.addData(text); q.make(); const n=q.getModuleCount(), quiet=2, cell=size/(n+quiet*2);
+  ctx.fillStyle="#fff"; ctx.fillRect(x,y,size,size); ctx.fillStyle="#1f1b17";
+  for(let r=0;r<n;r++) for(let c=0;c<n;c++) if(q.isDark(r,c)) ctx.fillRect(Math.floor(x+(c+quiet)*cell), Math.floor(y+(r+quiet)*cell), Math.ceil(cell), Math.ceil(cell));
+}
+function qrCanvas(text, px=480){ if(typeof qrcode!=="function"){ const d=document.createElement("p"); d.className="notice"; d.textContent="QR code couldn't load. Show your reference code when you board."; return d; } const c=document.createElement("canvas"); c.width=c.height=px; c.className="qr"; drawQR(c.getContext("2d"),text,0,0,px); return c; }
+const logoImg=new Image(); logoImg.src="img/logo.png";
+function wrapText(ctx,text,max){ const words=String(text).split(" "), out=[]; let line="";
+  for(const w of words){ const t=line?line+" "+w:w; if(ctx.measureText(t).width>max && line){ out.push(line); line=w; } else line=t; }
+  if(line) out.push(line); return out.length?out:[""]; }
+function ticketPNG(reg, t){
+  const W=720, n=party(reg), I=S.info, SERIF="'Times New Roman', Times, serif";
+  const rows=[["ADMIT", n===1?"1 person":`${n} people`]];
+  if(n>1) rows.push(["GROUP", [reg.name,...reg.guests].join(", ")]);
+  rows.push(["BUS LEAVES USC", I.depart||"Time to be announced"],["PICKUP", I.pickup||"To be announced"],["MANDIR","15100 Fairfield Ranch Rd, Chino Hills, CA 91709"]);
+  const c=document.createElement("canvas"), m=c.getContext("2d"); m.font="400 24px "+SERIF;
+  const lines=rows.map(([k,v])=>[k,wrapText(m,v,W-120)]);
+  const H=780+lines.reduce((sum,[,ls])=>sum+48+ls.length*30,0)+50;
+  c.width=W; c.height=H; const x=c.getContext("2d");
+  x.fillStyle="#fff"; x.fillRect(0,0,W,H);
+  x.fillStyle="#f7941d"; x.fillRect(0,0,W,8);
+  try{ if(logoImg.complete && logoImg.naturalWidth) x.drawImage(logoImg,40,36,78,100); }catch{}
+  x.fillStyle="#1f1b17"; x.font="400 40px "+SERIF; x.fillText("Diwali at BAPS Chino Hills",146,88);
+  x.fillStyle="#615950"; x.font="400 22px "+SERIF; x.fillText("USC student trip · Friday, November 6, 2026",146,124);
+  x.strokeStyle="#ebe4dc"; x.setLineDash([8,8]); x.beginPath(); x.moveTo(40,170); x.lineTo(W-40,170); x.stroke(); x.setLineDash([]);
+  drawQR(x, qrPayload(reg,t), 160, 200, 400);
+  x.textAlign="center"; x.fillStyle="#1f1b17"; x.font="400 38px "+SERIF; x.fillText((reg.name||"")+(n>1?`  +${n-1}`:""),W/2,668);
+  x.font="400 26px ui-monospace, Menlo, monospace"; x.fillStyle="#a95608"; x.fillText(reg.ref||"",W/2,712);
+  x.textAlign="left"; let y=780;
+  lines.forEach(([k,ls])=>{ x.fillStyle="#8c8379"; x.font="400 16px "+SERIF; x.fillText(k,60,y); x.fillStyle="#1f1b17"; x.font="400 24px "+SERIF; ls.forEach((l,i)=>x.fillText(l,60,y+30+i*30)); y+=48+ls.length*30; });
+  x.fillStyle="#8c8379"; x.font="italic 400 18px "+SERIF; x.textAlign="center";
+  x.fillText(n>1?`Admit ${n}. Your group boards together; show this code at the bus.`:"Admit one. Show this code when you board the bus.",W/2,H-28);
+  return c;
+}
+
+/* ---------------- seats + facts ---------------- */
+function renderInfo(){
+  const I=S.info, cap=Math.max(1,+I.capacity||50), n=Math.min(+I.confirmed||0,cap);
+  if(n!==seatShown || !renderInfo.done) tweenSeats(n,cap); renderInfo.done=true;
+  $("#seat-left").textContent = n>=cap ? "Waitlist open" : `${cap-n} left`;
+  $("#seat-bar").style.width=(n/cap*100)+"%";
+  $("#f-bus").textContent = I.depart ? `Leaves ${I.depart}` : "Departure time TBA";
+  $("#f-pickup").textContent = (I.pickup || "Pickup spot to be announced") + (I.ret ? ` · back ${I.ret}` : "");
+  $("#f-dep").textContent = `$${dep()}, fully refundable`;
+  const left=Math.max(0,cap-n);
+  $("#si-seats").textContent = left ? `${left} of ${cap} seats left. Sign up early; seats are first come, first served.` : "The bus is full right now. Sign up to join the waitlist.";
+  $("#si-depart").textContent = I.depart || "Time to be announced";
+  $("#si-pickup").textContent = I.pickup || "To be announced";
+  $("#si-dep").textContent = `$${dep()} per person, fully refundable`;
+  $("#si-contact").textContent = I.contact ? `Questions? Reach ${I.contact}${I.contactPhone?" at "+I.contactPhone:""}.` : "";
+  tick();
+  $("#foot-contact").textContent = I.contact ? `Questions? ${I.contact}${I.contactPhone?" · "+I.contactPhone:""}.` : "";
+}
+/* ---------------- talking to the site's server ---------------- */
+async function api(path, {body, admin}={}){
+  let r;
+  try{
+    r=await fetch(path,{method:body?"POST":"GET", cache:"no-store",
+      headers:{...(body?{"content-type":"application/json"}:{}), ...(admin?{"x-admin-key":S.key||""}:{})},
+      body:body?JSON.stringify(body):undefined});
+  }catch{ throw Object.assign(new Error("Can't reach the site. Check your connection and try again."),{status:0,data:{}}); }
+  let j={}; try{ j=await r.json(); }catch{}
+  if(!r.ok) throw Object.assign(new Error(j.error||"Something went wrong. Please try again."),{status:r.status,data:j});
+  return j;
+}
+const TOKEN_KEY="diwali26-token";
+function saveToken(t){ S.token=t||null; try{ t?localStorage.setItem(TOKEN_KEY,t):localStorage.removeItem(TOKEN_KEY); }catch{} }
+function download(blob, name){ const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000); }
+
+/* ---------------- registrant panel ---------------- */
+function renderPanel(force){
+  const p=$("#panel"), r=S.reg, t=r&&r.ticket;
+  const key = !S.ready ? "loading" : (!r||r.cancelled) ? "form" : S.editing ? "edit" : t ? "ticket" : r.waitlist ? "wait" : "pending";
+  if(!force && (key==="form"||key==="edit") && $("#reg") && S.panelKey===key){ updateTotal(); return; } // keep what they're typing
+  if(!force && key===S.panelKey && key!=="form" && key!=="edit" && key!=="loading") return; // nothing changed
+  if(S.panelKey && S.panelKey!==key && key!=="loading"){ p.classList.remove("enter"); void p.offsetWidth; p.classList.add("enter"); }
+  S.panelKey=key;
+  if(key==="loading"){ p.innerHTML=`<div class="eyebrow">Reserve your seat</div><h2 style="margin-top:6px">Ride the bus to the mandir</h2><p class="notice">Loading…</p>`; return; }
+  if(key==="ticket"||key==="pending"||key==="wait"){ p.innerHTML = key==="ticket" ? ticketView(r,t) : pendingView(r); wirePanel(); return; }
+  p.innerHTML=formView(key==="edit"?r:null, !!(r&&r.cancelled)); wireForm();
+}
+function formView(r, wasCancelled){
+  const full = seatsLeft()<=0;
+  S.fg = (r?.guests||[]).slice(0,MAXG);
+  let note="";
+  if(S.infoError) note=`<p class="notice warn">${esc(S.infoError)}</p>`;
+  else if(wasCancelled) note=`<p class="notice">Your earlier registration was cancelled. You can sign up again below.</p>`;
+  else if(full && !r) note=`<p class="notice warn">The bus is full. Register to join the waitlist and we'll contact you if a seat opens. Don't send a deposit yet.</p>`;
+  const v=k=>esc(r?.[k] ?? "");
+  return `
+  <div class="eyebrow">${r ? "Edit your details" : (full ? "Join the waitlist" : "Reserve your seat")}</div>
+  <h2 style="margin-top:6px">${r ? "Update registration" : "Ride the bus to the mandir"}</h2>
+  ${note}
+  <form class="reg" id="reg" novalidate>
+    <div class="field" id="w-name"><label for="f-name">Full name</label><input id="f-name" autocomplete="name" maxlength="80" value="${v("name")}" required><span class="msg" hidden></span></div>
+    <div class="row2">
+      <div class="field" id="w-email"><label for="f-email">Email</label><input id="f-email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="120" placeholder="you@example.com" value="${v("email")}" required><span class="msg" hidden></span></div>
+      <div class="field" id="w-phone"><label for="f-phone">Phone</label><input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="17" placeholder="(213) 555-0142" value="${v("phone")}" required><span class="msg" hidden></span></div>
+    </div>
+    <div class="field"><label for="f-party">Who's coming?</label>
+      <div class="sel"><select id="f-party">${[0,1,2,3].map(n=>`<option value="${n}" ${n===S.fg.length?"selected":""}>${n?`Me +${n} guest${n>1?"s":""} (${n+1} people)`:"Just me"}</option>`).join("")}</select></div></div>
+    <div class="guests" id="guests">${guestsHTML()}</div>
+    <div class="total" id="f-total"></div>
+    <div class="row2">
+      <div class="field"><label for="f-rmethod">Refund to</label><div class="sel"><select id="f-rmethod">${Object.entries(RM).map(([k,l])=>`<option value="${k}" ${(r?.refund?.method||"same")===k?"selected":""}>${l}</option>`).join("")}</select></div></div>
+      <div class="field" id="w-rhandle" ${(r?.refund?.method||"same")==="same"?"hidden":""}><label for="f-rhandle" id="l-rhandle">${RM[r?.refund?.method]||"Venmo"} account</label><input id="f-rhandle" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="100" placeholder="${RM_PH[r?.refund?.method]||"@username"}" value="${esc(r?.refund?.handle||"")}"><span class="msg" hidden></span></div>
+    </div>
+    <label class="check" id="w-agree"><input type="checkbox" id="f-agree" ${r?"checked":""}><span>I'll follow the mandir's dress code and send the deposit with my reference code.</span></label>
+    <div class="actions" style="margin-top:6px">
+      <button class="btn" type="submit" id="f-submit">${r ? "Save changes" : (full ? "Join waitlist" : "Register and get my reference code")}</button>
+      ${r ? `<button class="btn ghost" type="button" id="f-cancel-edit">Back</button>` : ""}
+    </div>
+    <p class="notice bad" id="f-error" hidden></p>
+  </form>
+  ${r ? "" : `<div class="lost"><button type="button" class="linkbtn" id="lost-btn">Already registered? Get your link by email</button>
+    <form id="lost-form" class="lost-form" hidden novalidate><input id="lost-email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" placeholder="Email you registered with" aria-label="Email you registered with"><button class="btn ghost sm" type="submit">Send my link</button></form></div>`}`;
+}
+function guestsHTML(){ return S.fg.map((g,i)=>`<div class="field" id="w-g${i}"><label for="f-g${i}">Guest ${i+1} full name</label><input id="f-g${i}" autocomplete="off" maxlength="80" value="${esc(g)}"><span class="msg" hidden></span></div>`).join(""); }
+function readGuests(){ S.fg=S.fg.map((g,i)=>{ const el=$("#f-g"+i); return el?el.value:g; }); }
+function updateTotal(){ const el=$("#f-total"); if(!el) return; const n=1+S.fg.length, d=dep(), left=seatsLeft(), seated=S.reg&&!S.reg.cancelled&&!S.reg.waitlist;
+  el.innerHTML=`<span>Refundable deposit${n>1?` · $${d} × ${n} people`:""}</span><b>$${d*n}</b><span class="w" style="color:var(--ink-2)">${esc(policyText())}</span>`+
+    (!seated && left>0 && n>left ? `<span class="w">Only ${left} seat${left===1?"":"s"} left, so a group of ${n} joins the waitlist.</span>`:""); }
+function payBlock(){
+  const I=S.info, rows=[];
+  if(I.venmo) rows.push(["Venmo",I.venmo]); if(I.zelle) rows.push(["Zelle",I.zelle]);
+  if(!rows.length) return `<p class="notice">The organizer hasn't added payment details yet. Check back here soon.</p>`;
+  return `<div class="pay">${rows.map(([k,v],i)=>`<div class="pay-row"><div><div class="k">${k}</div><div class="val" id="pv${i}">${esc(v)}</div></div><button class="btn ghost sm" type="button" data-copy="${esc(v)}" data-el="pv${i}">Copy</button></div>`).join("")}</div>`;
+}
+const keepNote = r => `<p class="hint-line">We emailed the link to this page to ${esc(r.email)}. Bookmark it to check back.</p>`;
+function pendingView(r){
+  if(r.waitlist) return `
+    <div class="eyebrow">Waitlist</div><h2 style="margin-top:6px">You're on the waitlist</h2>
+    <p class="notice">There aren't enough seats for ${party(r)>1?`your group of ${party(r)}`:"you"} right now. Don't send a deposit yet. If a seat opens, this page will show payment instructions.</p>
+    <div class="lab" style="margin-bottom:6px">Your reference</div><div class="refcode"><span id="rc">${esc(r.ref)}</span></div>
+    ${keepNote(r)}
+    <div class="actions"><button class="btn ghost sm" id="p-edit">Edit details</button><button class="btn danger sm" id="p-cancel">Leave waitlist</button></div>`;
+  return `
+    <div class="eyebrow">Almost there</div>
+    <h2 style="margin-top:6px">Send your $${dep()*party(r)} deposit</h2>
+    <p style="color:var(--ink-2);margin:0 0 14px">${party(r)>1?`$${dep()} × ${party(r)} people for you ${esc(groupLine(r))}. `:""}Put this reference code in the payment note so we can match it to you.</p>
+    <div class="refcode"><span id="rc">${esc(r.ref)}</span><button class="btn ghost sm" type="button" data-copy="${esc(r.ref)}" data-el="rc">Copy code</button></div>
+    ${payBlock()}
+    <p class="notice ok" style="margin:0 0 14px">Fully refundable. ${esc(policyText())}<br>Refund to: ${esc(refundLine(r).replace("they paid","you pay"))}</p>
+    <p class="notice"><span class="chip pending">Waiting for payment confirmation</span><br>Your QR ticket will appear here and be emailed to ${esc(r.email)} once the organizer confirms your payment.</p>
+    ${keepNote(r)}
+    <div class="actions"><button class="btn ghost sm" id="p-edit">Edit details</button><button class="btn danger sm" id="p-cancel">Cancel registration</button></div>`;
+}
+function ticketView(r,t){
+  const n=party(r);
+  return `
+    <div class="eyebrow">Confirmed${n>1?` · admit ${n}`:""}</div><h2 style="margin-top:6px">Your bus ticket</h2>
+    ${t.checkedInAt ? `<p class="notice ok">Checked in at ${esc(fmtDate(t.checkedInAt))}. Enjoy the evening.</p>` : `<p style="color:var(--ink-2);margin:0">Show this ticket when you board${n>1?"; your group boards together":""}. A copy was ${t.emailedAt?"emailed":"will be emailed"} to ${esc(r.email)}.</p>`}
+    <div class="tk ${t.checkedInAt?"used":""}" id="t-qr"></div>
+    <div class="actions"><button class="btn ghost sm" id="p-save">Save ticket image</button>${t.checkedInAt?"":`<button class="btn danger sm" id="p-cancel">I can't make it</button>`}</div>`;
+}
+function wirePanel(){
+  const r=S.reg;
+  $("#panel").querySelectorAll("[data-copy]").forEach(b=>b.onclick=()=>copy(b.dataset.copy, document.getElementById(b.dataset.el)));
+  const q=$("#t-qr"); if(q && r && r.ticket){
+    Promise.race([ready(logoImg), new Promise(res=>setTimeout(res,1500))]).then(()=>{ if(!q.isConnected) return; let el;
+      try{ el=ticketPNG(r,r.ticket); el.setAttribute("role","img"); el.setAttribute("aria-label",`Bus ticket for ${r.name}, reference ${r.ref}`); }
+      catch{ el=qrCanvas(qrPayload(r,r.ticket)); }
+      q.innerHTML=""; q.appendChild(el); }); }
+  const e=$("#p-edit"); if(e) e.onclick=()=>{ S.editing=true; renderPanel(true); };
+  const c=$("#p-cancel"); if(c) c.onclick=()=>armButton(c, async()=>{ c.disabled=true;
+    try{ const res=await api("/api/me",{body:{t:S.token, action:"cancel"}}); S.reg=res.reg; toast("Registration cancelled"); renderPanel(true); loadInfo(); }
+    catch(err){ c.disabled=false; toast(err.message); } });
+  const sv=$("#p-save"); if(sv) sv.onclick=()=>{ try{ ticketPNG(r,r.ticket).toBlob(b=>b&&download(b,`diwali-ticket-${r.ref}.png`)); }catch{ toast("Couldn't make the image. Take a screenshot instead."); } };
+}
+const EMAIL_RE=/^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[a-z]{2,}$/i;
+function emailError(v){ v=v.trim(); if(!v) return "Enter your email address.";
+  if(!v.includes("@")) return "That email is missing the @ sign.";
+  const [u,dom=""]=v.split("@"); if(!u) return "Add the part before the @.";
+  if(!dom) return "Add the part after the @, like gmail.com.";
+  if(!dom.includes(".")) return `“${dom}” is missing a domain ending, like .com or .edu.`;
+  return EMAIL_RE.test(v) ? "" : "That doesn't look like a complete email address."; }
+function phoneError(v){ let d=v.replace(/\D/g,""); if(!d) return "Enter your phone number.";
+  if(d.length===11 && d[0]==="1") d=d.slice(1);
+  if(d.length<10) return `That's ${d.length} digit${d.length===1?"":"s"}. Phone numbers need 10.`;
+  if(d.length>10) return "That's too many digits for a phone number.";
+  return ""; }
+function formatPhone(v){ let d=v.replace(/\D/g,""); const one=d.length>10&&d[0]==="1"; if(one) d=d.slice(1); d=d.slice(0,10);
+  if(d.length<4) return (one?"+1 ":"")+d; if(d.length<7) return (one?"+1 ":"")+`(${d.slice(0,3)}) ${d.slice(3)}`;
+  return (one?"+1 ":"")+`(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`; }
+function liveCheck(id, check, fmt){ const el=$("#f-"+id); if(!el) return; let t, touched=!!el.value;
+  const run=()=>setErr(id, el.value.trim()||touched ? check(el.value) : "");
+  el.addEventListener("input",()=>{ if(fmt){ const end=el.selectionEnd===el.value.length; const f=fmt(el.value); if(f!==el.value && end) el.value=f; }
+    clearTimeout(t); if(!check(el.value)) { setErr(id,""); return; }
+    if($("#w-"+id).classList.contains("err")) run(); else t=setTimeout(()=>{ if(el.value.trim()) run(); },900); });
+  el.addEventListener("blur",()=>{ clearTimeout(t); if(el.value.trim()){ touched=true; run(); } }); }
+function setErr(id,msg){ const w=$("#w-"+id); if(!w) return; w.classList.toggle("err",!!msg); const m=w.querySelector(".msg"); if(m){ m.hidden=!msg; m.textContent=msg||""; } }
+function wireForm(){
+  const f=$("#reg"); if(!f) return;
+  const ce=$("#f-cancel-edit"); if(ce) ce.onclick=()=>{ S.editing=false; renderPanel(true); };
+  updateTotal();
+  $("#f-rmethod").onchange=e=>{ const m=e.target.value, w=$("#w-rhandle"); w.hidden=(m==="same"); setErr("rhandle","");
+    if(m!=="same"){ $("#l-rhandle").textContent=RM[m]+" account"; $("#f-rhandle").placeholder=RM_PH[m]; $("#f-rhandle").focus(); } };
+  liveCheck("email", emailError); liveCheck("phone", phoneError, formatPhone);
+  $("#f-party").onchange=e=>{ readGuests(); const n=+e.target.value;
+    S.fg = n<=S.fg.length ? S.fg.slice(0,n) : S.fg.concat(Array(n-S.fg.length).fill(""));
+    $("#guests").innerHTML=guestsHTML(); updateTotal(); };
+  const lb=$("#lost-btn"), lf=$("#lost-form");
+  if(lb) lb.onclick=()=>{ lf.hidden=!lf.hidden; if(!lf.hidden) $("#lost-email").focus(); };
+  if(lf) lf.onsubmit=async e=>{ e.preventDefault(); const em=$("#lost-email").value.trim();
+    if(emailError(em)){ toast(emailError(em)); return; }
+    const b=lf.querySelector("button"); b.disabled=true;
+    try{ await api("/api/me",{body:{action:"lookup", email:em}}); toast("If that email is registered, your link is on its way."); lf.hidden=true; }
+    catch(err){ toast(err.message); } b.disabled=false; };
+  f.onsubmit=async ev=>{
+    ev.preventDefault();
+    const val=id=>$("#f-"+id).value.trim();
+    const d={name:val("name"), email:val("email").toLowerCase(), phone:val("phone")};
+    let ok=true;
+    setErr("name", d.name.length<2 ? (ok=false,"Enter your full name.") : "");
+    const eMsg=emailError(d.email), pMsg=phoneError(d.phone);
+    setErr("email", eMsg); setErr("phone", pMsg); if(eMsg||pMsg) ok=false;
+    readGuests(); const guests=S.fg.map(g=>g.trim());
+    guests.forEach((g,i)=>setErr("g"+i, g.length<2 ? (ok=false,"Enter this guest's full name.") : ""));
+    d.guests=guests;
+    const rm=$("#f-rmethod").value, rh=$("#f-rhandle").value.trim();
+    setErr("rhandle", rm!=="same" && rh.length<3 ? (ok=false,`Add the ${RM[rm]} account we should refund.`) : "");
+    d.refund = rm==="same" ? {method:"same"} : {method:rm, handle:rh};
+    const a1=$("#f-agree").checked; $("#w-agree").classList.toggle("err",!a1); if(!a1) ok=false;
+    if(!ok){ const first=f.querySelector(".err input, .err select"); if(first) first.focus(); return; }
+    const editing = S.editing && S.reg && !S.reg.cancelled;
+    const btn=$("#f-submit"), label=btn.textContent; btn.disabled=true; btn.textContent="Saving…"; const fe=$("#f-error"); fe.hidden=true; fe.className="notice bad";
+    try{
+      let res;
+      if(editing) res=await api("/api/me",{body:{t:S.token, action:"update", ...d}});
+      else { res=await api("/api/register",{body:d}); saveToken(res.token); }
+      S.reg=res.reg; S.editing=false; toast(editing?"Details saved":"You're registered"); renderPanel(true);
+      $("#signup").scrollIntoView({block:"start"}); loadInfo();
+    }catch(err){
+      btn.disabled=false; btn.textContent=label;
+      const fields=err.data?.fields||{}; Object.entries(fields).forEach(([k,m])=>setErr(k,m));
+      fe.hidden=false; fe.textContent=err.message;
+      if(err.data?.code==="already") fe.className="notice ok";
+    }
+  };
+}
+
+/* ---------------- loading data ---------------- */
+async function loadInfo(){
+  const before=JSON.stringify(S.info);
+  try{ const {info}=await api("/api/info"); S.info={...DEF,...info}; S.infoError=null; }
+  catch(err){ S.infoError = err.status===500 ? err.message : null; }
+  renderInfo(); renderPanel(JSON.stringify(S.info)!==before && S.panelKey!=="form" && S.panelKey!=="edit");
+}
+async function loadMe(){
+  if(!S.token) return;
+  try{ const res=await api("/api/me?t="+encodeURIComponent(S.token)); S.reg=res.reg; }
+  catch(err){ if(err.status===404){ saveToken(null); S.reg=null; toast("That registration link isn't valid anymore."); } }
+}
+
+/* ---------------- organizer ---------------- */
+const LABEL={pending:"Awaiting payment",confirmed:"Confirmed",in:"Checked in",waitlist:"Waitlist",cancelled:"Cancelled"};
+function statusOf(r){ const t=r.ticket; if(r.cancelled) return "cancelled"; if(t?.checkedInAt) return "in"; if(t) return "confirmed"; if(r.waitlist) return "waitlist"; return "pending"; }
+const byId = id => S.regs.find(r=>r.id===id);
+function counts(){ const c={pending:0,confirmed:0,in:0,waitlist:0,cancelled:0,s:{pending:0,confirmed:0,in:0,waitlist:0,cancelled:0}};
+  for(const r of S.regs){ const st=statusOf(r); c[st]++; c.s[st]+=party(r); } return c; }
+async function loadAdmin(){
+  const res=await api("/api/admin",{admin:true, body:{action:"list"}});
+  S.regs=res.regs; S.settings=res.settings; S.emailReady=res.emailReady;
+  S.info={...S.info,...res.settings, confirmed:res.confirmed, policy:res.settings.policy||res.defaultPolicy};
+  renderInfo();
+}
+function renderLogin(msg){
+  $("#org").innerHTML=`<div class="login">
+    <div class="eyebrow" style="color:var(--saffron-ink)">Organizer</div><h2 style="margin:6px 0 14px">Sign in</h2>
+    <form id="login" class="reg" novalidate>
+      <div class="field"><label for="k">Organizer password</label><input id="k" type="password" autocomplete="current-password"></div>
+      <div class="actions" style="margin-top:4px"><button class="btn" type="submit">Sign in</button><a class="btn ghost" href="#">Back to the public page</a></div>
+      <p class="notice bad" id="login-err" ${msg?"":"hidden"}>${esc(msg||"")}</p>
+    </form></div>`;
+  $("#k").focus();
+  $("#login").onsubmit=async e=>{ e.preventDefault(); S.key=$("#k").value; const b=e.target.querySelector("button"); b.disabled=true;
+    try{ await loadAdmin(); try{ sessionStorage.setItem("diwali26-admin",S.key); }catch{} renderOrg(); startAdminPoll(); }
+    catch(err){ S.key=null; b.disabled=false; const m=$("#login-err"); m.hidden=false; m.textContent=err.message; } };
+}
+function renderOrg(){
+  if(!S.key){ renderLogin(); return; }
+  const c=counts(), cap=+S.info.capacity||50, I=S.settings||S.info;
+  const needsPay = !I.venmo && !I.zelle;
+  $("#org").innerHTML=`
+    <div class="org-head"><div><div class="eyebrow" style="color:var(--saffron-ink)">Organizer</div><h2 style="margin:4px 0 0">Bus sign-ups</h2></div>
+      <div class="actions" style="margin:0"><a class="btn ghost sm" href="#">View the public page</a><button class="btn ghost sm" id="o-out">Sign out</button></div></div>
+    ${needsPay?`<p class="notice warn">Add your Venmo or Zelle details in Trip settings so people know where to send the deposit.</p>`:""}
+    ${S.emailReady?"":`<p class="notice warn">Emails are off. Add GMAIL_USER and GMAIL_APP_PASSWORD in Vercel to send reference codes and tickets automatically.</p>`}
+    <div class="stats">
+      <div><div class="lab">Confirmed seats</div><div class="n">${c.s.confirmed+c.s.in}<small> / ${cap}</small></div></div>
+      <div><div class="lab">Seats awaiting payment</div><div class="n">${c.s.pending}</div></div>
+      <div><div class="lab">Waitlist seats</div><div class="n">${c.s.waitlist}</div></div>
+      <div><div class="lab">People checked in</div><div class="n">${c.s.in}</div></div>
+    </div>
+    <details class="settings" ${needsPay?"open":""}><summary>Trip settings</summary>
+      <form class="settings-body" id="sform">
+        <div class="field"><label for="s-capacity">Bus seats</label><input id="s-capacity" type="number" min="1" value="${esc(I.capacity)}"></div>
+        <div class="field"><label for="s-deposit">Deposit per person ($)</label><input id="s-deposit" type="number" min="0" value="${esc(I.deposit)}"></div>
+        <div class="field"><label for="s-depart">Bus leaves USC at</label><input id="s-depart" placeholder="4:30 PM" value="${esc(I.depart)}"></div>
+        <div class="field"><label for="s-pickup">Pickup spot</label><input id="s-pickup" placeholder="Jefferson Blvd & McClintock Ave" value="${esc(I.pickup)}"></div>
+        <div class="field"><label for="s-ret">Back at USC around</label><input id="s-ret" placeholder="10:30 PM" value="${esc(I.ret)}"></div>
+        <div class="field"><label for="s-venmo">Venmo handle</label><input id="s-venmo" placeholder="@your-venmo" value="${esc(I.venmo)}"></div>
+        <div class="field"><label for="s-zelle">Zelle email or phone</label><input id="s-zelle" value="${esc(I.zelle)}"></div>
+        <div class="field"><label for="s-contact">Organizer name</label><input id="s-contact" value="${esc(I.contact)}"></div>
+        <div class="field"><label for="s-cphone">Organizer phone</label><input id="s-cphone" value="${esc(I.contactPhone)}"></div>
+        <div class="field full"><label for="s-policy">Refund policy (shown on the form and in emails)</label><input id="s-policy" placeholder="${esc(DEFAULT_POLICY)}" value="${esc(S.settings?.policy||"")}"></div>
+        <div class="full"><button class="btn" type="submit">Save settings</button></div>
+      </form>
+    </details>
+    <div class="tabs"><button type="button" data-tab="list" class="${S.tab==="list"?"on":""}">Registrations</button><button type="button" data-tab="ci" class="${S.tab==="ci"?"on":""}">Check-in</button></div>
+    <div id="tabbody"></div>`;
+  $("#o-out").onclick=()=>{ S.key=null; try{ sessionStorage.removeItem("diwali26-admin"); }catch{} stopScan(); renderLogin(); };
+  $("#sform").onsubmit=async e=>{ e.preventDefault(); const g=id=>$("#s-"+id).value.trim(); const b=e.target.querySelector("button[type=submit]"); b.disabled=true;
+    try{ const res=await api("/api/admin",{admin:true, body:{action:"settings", settings:{capacity:g("capacity"), deposit:g("deposit"), depart:g("depart"), pickup:g("pickup"), ret:g("ret"), venmo:g("venmo"), zelle:g("zelle"), contact:g("contact"), contactPhone:g("cphone"), policy:g("policy")}}});
+      S.settings=res.settings; S.info={...S.info,...res.settings, policy:res.settings.policy||DEFAULT_POLICY}; toast("Settings saved"); renderInfo(); renderOrg(); }
+    catch(err){ b.disabled=false; toast(err.message); } };
+  $("#org").querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{ S.tab=b.dataset.tab; stopScan(); renderOrg(); });
+  S.tab==="list" ? renderList() : renderCheckin();
+}
+function renderOrgStatsOnly(){ const c=counts(), cap=+S.info.capacity||50, n=document.querySelectorAll(".stats .n"); if(n.length===4){ n[0].innerHTML=`${c.s.confirmed+c.s.in}<small> / ${cap}</small>`; n[1].textContent=c.s.pending; n[2].textContent=c.s.waitlist; n[3].textContent=c.s.in; } }
+function renderList(){
+  const body=$("#tabbody"); const F=["all","pending","confirmed","in","waitlist","cancelled"];
+  body.innerHTML=`
+    <div class="toolbar">
+      <input type="search" id="o-q" placeholder="Search name, email or reference" value="${esc(S.q)}">
+      <label class="switch" ${S.emailReady?"":"hidden"}><input type="checkbox" id="o-mail" ${S.emailOnConfirm?"checked":""}> Email the ticket when I confirm</label>
+      <button class="btn ghost sm" id="o-csv">Export CSV</button>
+    </div>
+    <div class="filters" style="margin-bottom:14px">${F.map(f=>`<button type="button" data-f="${f}" class="${S.filter===f?"on":""}">${f==="all"?"All":LABEL[f]}</button>`).join("")}</div>
+    <div class="rows" id="rows"></div>`;
+  const q=$("#o-q"); q.oninput=()=>{ S.q=q.value; drawRows(); };
+  const m=$("#o-mail"); if(m) m.onchange=()=>S.emailOnConfirm=m.checked;
+  body.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{ S.filter=b.dataset.f; renderList(); });
+  $("#o-csv").onclick=exportCSV;
+  drawRows();
+}
+function drawRows(){
+  const rows=$("#rows"); if(!rows) return;
+  const q=S.q.toLowerCase();
+  const list=S.regs.filter(r=>(S.filter==="all"||statusOf(r)===S.filter) && (!q || [r.name,r.email,r.ref,r.phone,...(r.guests||[])].join(" ").toLowerCase().includes(q)));
+  if(!S.regs.length){ rows.innerHTML=`<p class="empty">No one has registered yet. New sign-ups appear here as they come in.</p>`; return; }
+  if(!list.length){ rows.innerHTML=`<p class="empty">No registrations match.</p>`; return; }
+  rows.innerHTML=list.map(r=>{ const id=r.id, s=statusOf(r), t=r.ticket, busy=S.busy.has(id)?"disabled":""; let a="";
+    if(s==="pending") a=`<button class="btn ok sm" data-act="confirm" data-id="${id}" ${busy}>Confirm payment</button><button class="btn ghost sm" data-act="waitlist" data-id="${id}" ${busy}>Waitlist</button>`;
+    if(s==="waitlist") a=`<button class="btn ghost sm" data-act="offer" data-id="${id}" ${busy}>Offer a seat</button><button class="btn ok sm" data-act="confirm" data-id="${id}" ${busy}>Confirm payment</button>`;
+    if(s==="confirmed") a=`<button class="btn sm" data-act="checkin" data-id="${id}" ${busy}>Check in</button>${S.emailReady?`<button class="btn ghost sm" data-act="email" data-id="${id}" ${busy}>${t?.emailedAt?"Resend email":"Email ticket"}</button>`:""}<button class="btn danger sm" data-act="revoke" data-id="${id}" ${busy}>Revoke</button>`;
+    if(s==="in") a=`${t?.refundedAt?`<button class="btn ghost sm" data-act="unrefund" data-id="${id}" ${busy}>Undo refund</button>`:`<button class="btn ok sm" data-act="refund" data-id="${id}" ${busy}>Mark $${dep()*party(r)} refunded</button>`}<button class="btn ghost sm" data-act="undo" data-id="${id}" ${busy}>Undo check-in</button>`;
+    if(s==="cancelled") a=`<button class="btn ghost sm" data-act="restore" data-id="${id}" ${busy}>Restore</button>${t&&!t.refundedAt?`<button class="btn ghost sm" data-act="refund" data-id="${id}" ${busy}>Mark refunded</button>`:""}`;
+    const msg=S.rowMsg[id];
+    return `<div class="r ${s}">
+      <div><div class="nm">${esc(r.name)}${party(r)>1?`<span class="plus">+${party(r)-1}</span>`:""}</div>${party(r)>1?`<div class="sub">${esc(groupLine(r))}</div>`:""}</div>
+      <div class="ct">${esc(r.email)}<br>${esc(r.phone)}<br><span class="sub">Refund: ${esc(refundLine(r))}</span></div>
+      <div class="ref">${esc(r.ref)}<div class="sub">$${dep()*party(r)} · ${party(r)} seat${party(r)>1?"s":""}</div><div class="sub">${esc(fmtDate(r.createdAt))}</div></div>
+      <div><span class="chip ${s}">${LABEL[s]}</span>${t?.refundedAt?`<div class="sub">refunded</div>`:t?.emailedAt?`<div class="sub">emailed</div>`:""}</div>
+      <div class="acts">${a}</div>
+      ${msg?`<div class="rowmsg notice ${msg.k}">${esc(msg.t)}</div>`:""}
+    </div>`; }).join("");
+  rows.querySelectorAll("[data-act]").forEach(b=>b.onclick=()=>{ const id=b.dataset.id, act=b.dataset.act;
+    if(act==="revoke") return armButton(b,()=>doAct(id,act));
+    doAct(id,act); });
+}
+function putReg(reg){ const i=S.regs.findIndex(r=>r.id===reg.id); if(i>=0) S.regs[i]=reg; else S.regs.push(reg); }
+function refreshSeatCount(){ const c=counts(); S.info.confirmed=c.s.confirmed+c.s.in; renderInfo(); renderOrgStatsOnly(); }
+async function doAct(id, act){
+  const r=byId(id); if(!r) return; S.busy.add(id); delete S.rowMsg[id]; drawRows();
+  try{
+    const res=await api("/api/admin",{admin:true, body:{action:act, id, email: act==="confirm" ? (S.emailReady && S.emailOnConfirm) : undefined}});
+    putReg(res.reg);
+    if(act==="confirm") toast(`Confirmed ${r.name}`);
+    if(act==="refund") toast(`Marked ${r.name} refunded`);
+    if(act==="revoke") toast("Ticket revoked");
+    if(res.emailed) S.rowMsg[id]={k:"ok", t:`Ticket emailed to ${r.email}.`};
+    else if(res.emailError) S.rowMsg[id]={k:"bad", t:res.emailError};
+    refreshSeatCount();
+  }catch(err){
+    if(err.status===401){ S.key=null; renderLogin("Your session ended. Sign in again."); return; }
+    S.rowMsg[id]={k:"bad", t:err.message};
+  }
+  S.busy.delete(id); drawRows();
+}
+function exportCSV(){
+  const head=["Name","Email","Phone","Group size","Guests","Deposit due","Reference","Status","Registered","Checked in","Refunded","Refund to"];
+  const q=v=>`"${String(v??"").replace(/"/g,'""')}"`;
+  const lines=[head.join(",")].concat(S.regs.map(r=>{ const t=r.ticket; return [r.name,r.email,r.phone,party(r),(r.guests||[]).join("; "),dep()*party(r),r.ref,LABEL[statusOf(r)],r.createdAt||"",t?.checkedInAt||"",t?.refundedAt||"",refundLine(r)].map(q).join(","); }));
+  download(new Blob([lines.join("\n")],{type:"text/csv"}),"diwali-bus-signups.csv");
+}
+
+/* ---------------- check-in with the phone camera ---------------- */
+let scan=null;
+function stopScan(){ if(!scan) return; cancelAnimationFrame(scan.raf); scan.stream.getTracks().forEach(t=>t.stop()); scan=null; const v=$("#ci-video"); if(v) v.srcObject=null; const w=$("#ci-cam"); if(w) w.hidden=true; const b=$("#ci-start"); if(b) b.textContent="Scan with camera"; }
+async function startScan(){
+  const box=$("#ci-cam"), v=$("#ci-video");
+  if(!navigator.mediaDevices?.getUserMedia){ toast("This browser can't use the camera. Use Scan from photo instead."); return; }
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"},audio:false});
+    v.srcObject=stream; await v.play(); box.hidden=false; $("#ci-start").textContent="Stop camera";
+    const cv=document.createElement("canvas"), x=cv.getContext("2d",{willReadFrequently:true}); let last=0;
+    scan={stream, raf:0};
+    const loop=now=>{ if(!scan) return; scan.raf=requestAnimationFrame(loop);
+      if(now-last<220 || v.readyState<2) return; last=now;
+      const k=Math.min(1,720/Math.max(v.videoWidth,v.videoHeight)); cv.width=v.videoWidth*k; cv.height=v.videoHeight*k;
+      x.drawImage(v,0,0,cv.width,cv.height);
+      const hit=window.jsQR && jsQR(x.getImageData(0,0,cv.width,cv.height).data,cv.width,cv.height,{inversionAttempts:"dontInvert"});
+      if(hit && hit.data){ if(navigator.vibrate) navigator.vibrate(80); stopScan(); showRider(findByPayload(hit.data), hit.data); } };
+    scan.raf=requestAnimationFrame(loop);
+  }catch{ toast("Camera access was blocked. Allow the camera in your browser settings, or use Scan from photo."); stopScan(); }
+}
+function findByPayload(txt){
+  const s=String(txt).trim().toUpperCase(); const m=s.match(/^DIW26:([A-Z0-9-]+):([A-Z0-9]+)$/);
+  const hit=S.regs.find(r=> r.ticket && (m ? (r.ticket.code===m[2] && r.ref===m[1]) : r.ref.toUpperCase()===s));
+  return hit?hit.id:null;
+}
+function renderCheckin(){
+  const c=counts();
+  $("#tabbody").innerHTML=`<div class="ci">
+    <div><h3>Check riders onto the bus</h3><p style="color:var(--ink-2);margin:0 0 16px" id="ci-count">${c.s.in} of ${c.s.confirmed+c.s.in} confirmed riders checked in.</p>
+      <div class="actions" style="margin-top:0"><button class="btn" type="button" id="ci-start">Scan with camera</button><span class="btn ghost filebtn">Scan from photo<input type="file" id="ci-file" accept="image/*"></span></div>
+      <div class="scan" id="ci-cam" hidden><video id="ci-video" playsinline muted></video></div>
+      <form id="ci-form" class="toolbar" style="margin-top:16px"><input type="search" id="ci-code" placeholder="Reference code, e.g. DIW-4K7Q" autocapitalize="characters" style="flex:1 1 200px;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:16px"><button class="btn ghost sm" type="submit">Look up</button></form></div>
+    <div class="ci-result" id="ci-res"><p class="empty" style="padding:30px 0">Scan or look up a ticket to see who it belongs to.</p></div></div>`;
+  $("#ci-start").onclick=()=> scan ? stopScan() : startScan();
+  $("#ci-form").onsubmit=e=>{ e.preventDefault(); showRider(findByPayload($("#ci-code").value), $("#ci-code").value); };
+  $("#ci-file").onchange=async e=>{ const f=e.target.files[0]; if(!f) return; const res=$("#ci-res"); res.innerHTML=`<p class="empty">Reading the code…</p>`;
+    try{ const url=URL.createObjectURL(f), im=new Image(); im.src=url; await im.decode(); const k=Math.min(1,1400/Math.max(im.width,im.height)); const cv=document.createElement("canvas"); cv.width=im.width*k; cv.height=im.height*k; const x=cv.getContext("2d"); x.drawImage(im,0,0,cv.width,cv.height); URL.revokeObjectURL(url);
+      const qr=window.jsQR ? jsQR(x.getImageData(0,0,cv.width,cv.height).data,cv.width,cv.height) : null;
+      if(!qr) res.innerHTML=`<p class="notice bad">No QR code found in that photo. Hold the phone closer and try again, or type the reference code.</p>`; else showRider(findByPayload(qr.data), qr.data);
+    }catch{ res.innerHTML=`<p class="notice bad">Couldn't open that photo. Try another one or type the reference code.</p>`; }
+    e.target.value=""; };
+}
+function showRider(id, raw, justIn){
+  const res=$("#ci-res"); if(!res) return;
+  if(!id){ res.innerHTML=`<p class="notice bad">No confirmed ticket matches “${esc(raw)}”. Check the code, or look the person up under Registrations.</p>`; return; }
+  const r=byId(id), t=r.ticket, s=statusOf(r);
+  res.innerHTML=`<div class="lab">${esc(r.ref)}</div><h3 style="font-size:30px;margin:4px 0">${esc(r.name)}${party(r)>1?`<span class="plus">+${party(r)-1}</span>`:""}</h3>${party(r)>1?`<p style="margin:0 0 6px">Admit ${party(r)}: ${esc([r.name,...r.guests].join(", "))}</p>`:""}<p style="color:var(--ink-2);margin:0 0 10px">${esc(r.phone)}</p>
+    ${s==="cancelled"?`<p class="notice bad">This registration was cancelled.</p>`:s==="in"?(justIn?`<p class="notice ok">Checked in. Admit ${party(r)}${party(r)>1?"; the whole group can board":""}.</p>`:`<p class="notice warn">Already checked in at ${esc(fmtDate(t.checkedInAt))}.</p>`):`<button class="btn ok" id="ci-go">${party(r)>1?`Check in group of ${party(r)}`:`Check in ${esc(r.name.split(" ")[0])}`}</button>`}
+    <div class="actions"><button class="btn ghost sm" id="ci-next">Scan the next ticket</button></div>`;
+  const go=$("#ci-go"); if(go) go.onclick=async()=>{ go.disabled=true;
+    try{ const out=await api("/api/admin",{admin:true, body:{action:"checkin", id}}); putReg(out.reg); toast(`${r.name} checked in`); refreshSeatCount();
+      const cc=counts(); const el=$("#ci-count"); if(el) el.textContent=`${cc.s.in} of ${cc.s.confirmed+cc.s.in} confirmed riders checked in.`; showRider(id,raw,true); }
+    catch(err){ go.disabled=false; toast(err.message); } };
+  $("#ci-next").onclick=()=>startScan();
+}
+let adminPoll;
+function startAdminPoll(){ clearInterval(adminPoll); adminPoll=setInterval(async()=>{
+  if(document.hidden || $("#view-org").hidden || !S.key || S.busy.size) return;
+  const a=document.activeElement; if(a && a.closest && a.closest("#sform, #o-q, #ci-form")) return;
+  try{ await loadAdmin(); renderOrgStatsOnly(); if(S.tab==="list") drawRows(); }catch{} }, 20000); }
+
+/* ---------------- routing ---------------- */
+function route(){
+  const org = location.hash==="#organizer";
+  $("#view-main").hidden=org; $("#view-org").hidden=!org;
+  if(!org){ stopScan(); return; }
+  if(S.key && !S.regs.length){ loadAdmin().then(()=>{ renderOrg(); startAdminPoll(); }).catch(()=>{ S.key=null; renderLogin(); }); }
+  renderOrg();
+}
+window.addEventListener("hashchange", route);
+
+/* ---------------- boot ---------------- */
+(async()=>{
+  const params=new URLSearchParams(location.search);
+  const t=params.get("t");
+  if(t){ saveToken(t); params.delete("t"); history.replaceState(null,"",location.pathname+(params.toString()?"?"+params:"")+location.hash); }
+  else { try{ S.token=localStorage.getItem(TOKEN_KEY); }catch{} }
+  try{ S.key=sessionStorage.getItem("diwali26-admin"); }catch{}
+  renderInfo(); renderPanel();
+  route();
+  await Promise.all([loadMe(), (async()=>{ try{ const {info}=await api("/api/info"); S.info={...DEF,...info}; }catch(err){ S.infoError = err.status===500 ? err.message : "Couldn't load the latest seat count."; } })()]);
+  S.ready=true; renderInfo(); renderPanel(true);
+  if(t) setTimeout(()=>$("#signup").scrollIntoView({block:"start"}),300);
+  setInterval(async()=>{ if(document.hidden) return;
+    const waiting=S.reg && !S.reg.cancelled && !S.reg.ticket?.checkedInAt;
+    const typing=document.activeElement && document.activeElement.closest && document.activeElement.closest("#reg");
+    if(waiting && !S.editing && !typing){ const before=JSON.stringify(S.reg); await loadMe(); if(JSON.stringify(S.reg)!==before){ S.panelKey=null; renderPanel(true); } }
+    await loadInfo(); }, 30000);
+})();
+})();
+
+</script>
+</body>
+</html>

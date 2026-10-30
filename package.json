@@ -1,0 +1,13 @@
+{
+  "name": "diwali-usc",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Bus sign-ups, deposits and QR tickets for the USC trip to Diwali at BAPS Chino Hills",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@neondatabase/serverless": "1.1.0",
+    "nodemailer": "6.10.1",
+    "qrcode": "1.5.4"
+  }
+}
