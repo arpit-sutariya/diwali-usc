@@ -784,7 +784,9 @@ function payBlock(){
   const I=S.info, rows=[];
   if(I.venmo) rows.push(["Venmo",I.venmo]); if(I.zelle) rows.push(["Zelle",I.zelle]);
   if(!rows.length) return `<p class="notice">The organizer hasn't added payment details yet. Check back here soon.</p>`;
-  return `<div class="pay">${rows.map(([k,v],i)=>`<div class="pay-row"><div><div class="k">${k}</div><div class="val" id="pv${i}">${esc(v)}</div></div><button class="btn ghost sm" type="button" data-copy="${esc(v)}" data-el="pv${i}">Copy</button></div>`).join("")}</div>`;
+  // "handle (Account Name)" shows the name underneath and copies only the handle
+  return `<div class="pay">${rows.map(([k,raw],i)=>{ const m=String(raw).match(/^(.*?)\s*\(([^()]+)\)$/), v=m?m[1]:raw;
+    return `<div class="pay-row"><div><div class="k">${k}</div><div class="val" id="pv${i}">${esc(v)}</div>${m?`<div class="k" style="text-transform:none;letter-spacing:0">${esc(m[2])}</div>`:""}</div><button class="btn ghost sm" type="button" data-copy="${esc(v)}" data-el="pv${i}">Copy</button></div>`; }).join("")}</div>`;
 }
 const keepNote = r => `<p class="hint-line">We emailed the link to this page to ${esc(r.email)}. Bookmark it to check back.</p>`;
 function pendingView(r){
