@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import { q, ready } from "../lib/db.js";
-import { getSettings, saveSettings, seatsTaken, toClient, linkFor, readBody, fail, rand, DEFAULT_POLICY } from "../lib/core.js";
+import { getSettings, saveSettings, seatsTaken, toClient, linkFor, passLinkFor, readBody, fail, rand, DEFAULT_POLICY } from "../lib/core.js";
 import { sendTicket, mailReady } from "../lib/mail.js";
 
 const hash = (s) => crypto.createHash("sha256").update(String(s)).digest();
@@ -26,7 +26,7 @@ const SET = {
 async function emailTicket(req, row) {
   const s = await getSettings();
   try {
-    const out = await sendTicket(row, { ...s, policy: s.policy || DEFAULT_POLICY }, linkFor(req, row));
+    const out = await sendTicket(row, { ...s, policy: s.policy || DEFAULT_POLICY }, linkFor(req, row), passLinkFor(req, row));
     if (!out.sent) return { row, emailed: false, emailError: out.reason };
     row = (await q("update regs set emailed_at = now() where id = $1 returning *", [row.id]))[0];
     return { row, emailed: true };

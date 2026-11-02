@@ -65,6 +65,32 @@ Then **Deployments** → the latest one → **⋯ → Redeploy** so the settings
 
 Now share the link.
 
+## Apple Wallet passes (optional)
+
+Confirmed students get an **Add to Apple Wallet** button on their ticket and in the ticket email.
+It stays hidden until these settings exist. You need a paid Apple Developer account ($99/year).
+
+1. developer.apple.com → **Certificates, IDs & Profiles → Identifiers → +** → **Pass Type IDs**.
+   Use an identifier like `pass.com.yourname.diwali`.
+2. Open that Pass Type ID → **Create Certificate**, follow the steps (Keychain Access → Certificate Assistant →
+   Request a Certificate From a Certificate Authority, saved to disk), and download the `.cer`.
+3. Double-click the `.cer` to add it to Keychain. In Keychain Access → **My Certificates**, right-click
+   "Pass Type ID: pass.com.yourname.diwali" → **Export** as `pass.p12` (choose a password).
+4. Download Apple's **Worldwide Developer Relations - G4** certificate from apple.com/certificateauthority as `AppleWWDRCAG4.cer`.
+5. In Terminal, copy each file as text: `base64 -i pass.p12 | pbcopy` and `base64 -i AppleWWDRCAG4.cer | pbcopy`.
+6. Add these in Vercel → **Settings → Environment Variables**, then redeploy:
+
+| Name | Value |
+|---|---|
+| `APPLE_PASS_TYPE_ID` | `pass.com.yourname.diwali` |
+| `APPLE_TEAM_ID` | Your 10-character Team ID (top right of developer.apple.com) |
+| `APPLE_PASS_P12` | The base64 text of `pass.p12` |
+| `APPLE_PASS_P12_PASSWORD` | The password from step 3 |
+| `APPLE_WWDR_CERT` | The base64 text of `AppleWWDRCAG4.cer` |
+
+The pass shows the same QR code as the ticket, so the check-in scanner works with it. A pass doesn't change after it's added:
+if you revoke a ticket, the scanner still rejects it.
+
 ## Running the event
 
 - **Payments:** match each Venmo/Zelle payment to its reference code (e.g. `DIW-4K7Q`), then **Confirm payment**.

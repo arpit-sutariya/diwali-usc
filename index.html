@@ -817,13 +817,16 @@ function pendingView(r){
     ${keepNote(r)}
     <div class="actions"><button class="btn ghost sm" id="p-edit">Edit details</button><button class="btn danger sm" id="p-cancel">Cancel registration</button></div>`;
 }
+// Only Apple devices can add .pkpass files, and only once the organizer has set up Wallet passes
+const walletButton = () => S.info.wallet && /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent) && !S.reg?.ticket?.checkedInAt
+  ? `<a class="btn sm" href="/api/pass?t=${encodeURIComponent(S.token)}">Add to Apple Wallet</a>` : "";
 function ticketView(r,t){
   const n=party(r);
   return `
     <div class="eyebrow">Confirmed${n>1?` · admit ${n}`:""}</div><h2 style="margin-top:6px">Your bus ticket</h2>
     ${t.checkedInAt ? `<p class="notice ok">Checked in at ${esc(fmtDate(t.checkedInAt))}. Enjoy the evening.</p>` : `<p style="color:var(--ink-2);margin:0">Show this ticket when you board${n>1?"; your group boards together":""}. A copy was ${t.emailedAt?"emailed":"will be emailed"} to ${esc(r.email)}.</p>`}
     <div class="tk ${t.checkedInAt?"used":""}" id="t-qr"></div>
-    <div class="actions"><button class="btn ghost sm" id="p-save">Save ticket image</button>${t.checkedInAt?"":`<button class="btn danger sm" id="p-cancel">I can't make it</button>`}</div>`;
+    <div class="actions">${walletButton()}<button class="btn ghost sm" id="p-save">Save ticket image</button>${t.checkedInAt?"":`<button class="btn danger sm" id="p-cancel">I can't make it</button>`}</div>`;
 }
 function wirePanel(){
   const r=S.reg;
