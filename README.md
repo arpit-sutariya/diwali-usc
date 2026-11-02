@@ -75,6 +75,7 @@ Now share the link.
   Without camera access, use **Scan from photo** or type the reference code.
 - **Refunds:** after someone checks in (or cancels in time), send their money back to the account in their row,
   then press **Mark refunded**. **Export CSV** gives you the full list with refund details.
+- **Removing test sign-ups:** press **Cancel** on the row (for a confirmed one, press **Revoke** first), then **Delete** (click twice to confirm). Deleting can't be undone.
 - **Lost links:** students can press "Already registered? Get your link by email" on the form.
 
 ## Limits worth knowing

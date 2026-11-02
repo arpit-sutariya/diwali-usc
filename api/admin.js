@@ -72,6 +72,11 @@ export default async function handler(req, res) {
       if (b.email !== false) out = await emailTicket(req, row);
       return res.status(200).json({ reg: toClient(out.row, true), emailed: out.emailed, emailError: out.emailError });
     }
+    if (a === "delete") {
+      if (!row.cancelled) return res.status(400).json({ error: "Cancel this registration first, then delete it." });
+      await q("delete from regs where id = $1 and cancelled", [id]);
+      return res.status(200).json({ deleted: true });
+    }
     if (a === "email") {
       if (!row.ticket_code) return res.status(400).json({ error: "Confirm the payment first." });
       const out = await emailTicket(req, row);

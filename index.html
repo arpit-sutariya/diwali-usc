@@ -508,7 +508,7 @@ img{max-width:100%}
           <li class="reveal"><h3>Send $5</h3><p>Pay the deposit by Venmo or Zelle and put your reference code in the payment note.</p></li>
           <li class="reveal"><h3>We confirm</h3><p>The organizer matches your payment to your reference code and approves your seat.</p></li>
           <li class="reveal"><h3>Get your QR</h3><p>Your QR ticket appears on this page and in your email. Show it when you board.</p></li>
-          <li class="reveal"><h3>Get your $5 back</h3><p>Once you're checked in on the bus, we refund your deposit to the account you chose.</p></li>
+          <li class="reveal"><h3>Get your $5 back</h3><p>Once you're checked in on the bus, we refund your deposit to the account you chose by Sunday, Nov 8.</p></li>
         </ol>
       </section>
 
@@ -652,7 +652,7 @@ const dep = () => (S.info.deposit===0 ? 0 : (+S.info.deposit||5));
 const seatsLeft = () => Math.max(0,(+S.info.capacity||DEF.capacity)-(+S.info.confirmed||0));
 // Must match SIGNUP_DEADLINE in lib/core.js: the end of Tuesday, Nov 3 in Los Angeles (PST)
 const signupsClosed = () => Date.now() >= Date.UTC(2026,10,4,8);
-const DEFAULT_POLICY="You get it back when you check in on the bus, or if you cancel by Thursday, Nov 5.";
+const DEFAULT_POLICY="You get it back by Sunday, Nov 8 once you check in on the bus, or if you cancel by Thursday, Nov 5.";
 const policyText = () => (S.info.policy||"").trim() || DEFAULT_POLICY;
 const RM={same:"Same account I pay from",venmo:"Venmo",zelle:"Zelle",paypal:"PayPal"};
 const RM_PH={venmo:"@username",zelle:"Email or phone on Zelle",paypal:"PayPal email"};
@@ -1013,11 +1013,11 @@ function drawRows(){
   if(!S.regs.length){ rows.innerHTML=`<p class="empty">No one has registered yet. New sign-ups appear here as they come in.</p>`; return; }
   if(!list.length){ rows.innerHTML=`<p class="empty">No registrations match.</p>`; return; }
   rows.innerHTML=list.map(r=>{ const id=r.id, s=statusOf(r), t=r.ticket, busy=S.busy.has(id)?"disabled":""; let a="";
-    if(s==="pending") a=`<button class="btn ok sm" data-act="confirm" data-id="${id}" ${busy}>Confirm payment</button><button class="btn ghost sm" data-act="waitlist" data-id="${id}" ${busy}>Waitlist</button>`;
-    if(s==="waitlist") a=`<button class="btn ghost sm" data-act="offer" data-id="${id}" ${busy}>Offer a seat</button><button class="btn ok sm" data-act="confirm" data-id="${id}" ${busy}>Confirm payment</button>`;
+    if(s==="pending") a=`<button class="btn ok sm" data-act="confirm" data-id="${id}" ${busy}>Confirm payment</button><button class="btn ghost sm" data-act="waitlist" data-id="${id}" ${busy}>Waitlist</button><button class="btn danger sm" data-act="cancel" data-id="${id}" ${busy}>Cancel</button>`;
+    if(s==="waitlist") a=`<button class="btn ghost sm" data-act="offer" data-id="${id}" ${busy}>Offer a seat</button><button class="btn ok sm" data-act="confirm" data-id="${id}" ${busy}>Confirm payment</button><button class="btn danger sm" data-act="cancel" data-id="${id}" ${busy}>Cancel</button>`;
     if(s==="confirmed") a=`<button class="btn sm" data-act="checkin" data-id="${id}" ${busy}>Check in</button>${S.emailReady?`<button class="btn ghost sm" data-act="email" data-id="${id}" ${busy}>${t?.emailedAt?"Resend email":"Email ticket"}</button>`:""}<button class="btn danger sm" data-act="revoke" data-id="${id}" ${busy}>Revoke</button>`;
     if(s==="in") a=`${t?.refundedAt?`<button class="btn ghost sm" data-act="unrefund" data-id="${id}" ${busy}>Undo refund</button>`:`<button class="btn ok sm" data-act="refund" data-id="${id}" ${busy}>Mark $${dep()*party(r)} refunded</button>`}<button class="btn ghost sm" data-act="undo" data-id="${id}" ${busy}>Undo check-in</button>`;
-    if(s==="cancelled") a=`<button class="btn ghost sm" data-act="restore" data-id="${id}" ${busy}>Restore</button>${t&&!t.refundedAt?`<button class="btn ghost sm" data-act="refund" data-id="${id}" ${busy}>Mark refunded</button>`:""}`;
+    if(s==="cancelled") a=`<button class="btn ghost sm" data-act="restore" data-id="${id}" ${busy}>Restore</button><button class="btn danger sm" data-act="delete" data-id="${id}" ${busy}>Delete</button>${t&&!t.refundedAt?`<button class="btn ghost sm" data-act="refund" data-id="${id}" ${busy}>Mark refunded</button>`:""}`;
     const msg=S.rowMsg[id];
     return `<div class="r ${s}">
       <div><div class="nm">${esc(r.name)}${party(r)>1?`<span class="plus">+${party(r)-1}</span>`:""}</div>${party(r)>1?`<div class="sub">${esc(groupLine(r))}</div>`:""}</div>
@@ -1028,7 +1028,7 @@ function drawRows(){
       ${msg?`<div class="rowmsg notice ${msg.k}">${esc(msg.t)}</div>`:""}
     </div>`; }).join("");
   rows.querySelectorAll("[data-act]").forEach(b=>b.onclick=()=>{ const id=b.dataset.id, act=b.dataset.act;
-    if(act==="revoke") return armButton(b,()=>doAct(id,act));
+    if(act==="revoke"||act==="delete"||act==="cancel") return armButton(b,()=>doAct(id,act));
     doAct(id,act); });
 }
 function putReg(reg){ const i=S.regs.findIndex(r=>r.id===reg.id); if(i>=0) S.regs[i]=reg; else S.regs.push(reg); }
@@ -1037,6 +1037,7 @@ async function doAct(id, act){
   const r=byId(id); if(!r) return; S.busy.add(id); delete S.rowMsg[id]; drawRows();
   try{
     const res=await api("/api/admin",{admin:true, body:{action:act, id, email: act==="confirm" ? (S.emailReady && S.emailOnConfirm) : undefined}});
+    if(act==="delete"){ S.regs=S.regs.filter(x=>x.id!==id); S.busy.delete(id); toast(`Deleted ${r.name}`); refreshSeatCount(); drawRows(); return; }
     putReg(res.reg);
     if(act==="confirm") toast(`Confirmed ${r.name}`);
     if(act==="refund") toast(`Marked ${r.name} refunded`);
