@@ -1,5 +1,5 @@
 import { q, ready } from "../lib/db.js";
-import { validate, getSettings, seatsTaken, secret, rand, toClient, linkFor, readBody, fail, party, DEFAULT_POLICY } from "../lib/core.js";
+import { validate, getSettings, seatsTaken, secret, rand, toClient, linkFor, readBody, fail, party, DEFAULT_POLICY, SIGNUP_DEADLINE } from "../lib/core.js";
 import { sendPending, sendLink } from "../lib/mail.js";
 
 // A new sign-up. Returns the private token that unlocks the registrant's page.
@@ -16,6 +16,8 @@ export default async function handler(req, res) {
       try { await sendLink(dup[0], s, linkFor(req, dup[0])); } catch (e) { console.error("link email failed", e); }
       return res.status(409).json({ error: "This email already has a registration. We've emailed you the link to it.", code: "already" });
     }
+
+    if (Date.now() >= SIGNUP_DEADLINE) return res.status(403).json({ error: "Sign-ups closed on Tuesday, November 3.", code: "closed" });
 
     const left = Math.max(0, s.capacity - (await seatsTaken()));
     const waitlist = 1 + data.guests.length > left;

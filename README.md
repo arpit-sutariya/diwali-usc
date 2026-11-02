@@ -1,6 +1,7 @@
 # Diwali at BAPS Chino Hills · USC bus sign-ups
 
-Sign-up site for the USC bus to Diwali at BAPS Chino Hills on Friday, November 6, 2026.
+Sign-up site for the USC bus to Diwali at BAPS Chino Hills on Saturday, November 7, 2026.
+Sign-ups close at the end of Tuesday, November 3 (`SIGNUP_DEADLINE` in `lib/core.js` and `signupsClosed` in `index.html`).
 Students register (with up to 3 guests), send a $5-per-person refundable deposit by Venmo or Zelle,
 and get a QR ticket by email once you confirm their payment.
 

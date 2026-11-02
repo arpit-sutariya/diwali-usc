@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Ride the bus from USC to Diwali at BAPS Shri Swaminarayan Mandir in Chino Hills on Friday, November 6, 2026. $5 refundable deposit.">
+<meta name="description" content="Ride the bus from USC to Diwali at BAPS Shri Swaminarayan Mandir in Chino Hills on Saturday, November 7, 2026. $5 refundable deposit.">
 <meta property="og:title" content="Diwali at BAPS Chino Hills · USC bus">
-<meta property="og:description" content="Friday, November 6, 2026. Reserve a seat on the bus from USC with a $5 refundable deposit.">
+<meta property="og:description" content="Saturday, November 7, 2026. Reserve a seat on the bus from USC with a $5 refundable deposit.">
 <meta property="og:image" content="/img/s01.jpg">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="/img/logo.png">
@@ -410,7 +410,7 @@ img{max-width:100%}
   <div class="top-in">
     <a class="brand" href="#">
       <img src="img/logo.png" alt="BAPS" width="388" height="500">
-      <span class="bt"><b>Diwali at the Mandir</b><span>USC student trip · Nov 6</span></span>
+      <span class="bt"><b>Diwali at the Mandir</b><span>USC student trip · Nov 7</span></span>
     </a>
     <nav class="nav">
       <a href="#details">Details</a>
@@ -433,7 +433,7 @@ img{max-width:100%}
   <div class="shade"></div>
 </div></div>
     <div class="hero-in" id="hero-in">
-      <div class="eyebrow a" style="--d:.1s">USC student trip · Friday, November 6, 2026</div>
+      <div class="eyebrow a" style="--d:.1s">USC student trip · Saturday, November 7, 2026</div>
       <h1 class="a" style="--d:.25s">Diwali at BAPS<br><i>Chino Hills</i></h1>
       <p class="lede a" style="--d:.45s">An evening of lights, decorations and celebration at the BAPS Shri Swaminarayan Mandir.</p>
       <div class="hero-actions a" style="--d:.6s">
@@ -444,7 +444,7 @@ img{max-width:100%}
         <div class="count" id="count" aria-live="off">
           <div><b id="cd-d">0</b><span>Days</span></div><div><b id="cd-h">00</b><span>Hours</span></div><div><b id="cd-m">00</b><span>Minutes</span></div><div><b id="cd-s">00</b><span>Seconds</span></div>
         </div>
-        <div class="count-lbl" id="cd-lbl">until Friday, November 6</div>
+        <div class="count-lbl" id="cd-lbl">until Saturday, November 7</div>
       </div>
       <div class="seats a" id="seats" style="--d:.9s">
         <div class="lbl"><span id="seat-text">Bus seats</span><span id="seat-left"></span></div>
@@ -458,7 +458,7 @@ img{max-width:100%}
   <main class="sheet">
     <div class="wrap">
       <div class="facts" id="details">
-        <div class="reveal"><div class="eyebrow">When</div><div class="v">Friday, Nov 6, 2026</div><div class="s">Evening celebration</div></div>
+        <div class="reveal"><div class="eyebrow">When</div><div class="v">Saturday, Nov 7, 2026</div><div class="s">Evening celebration</div></div>
         <div class="reveal"><div class="eyebrow">Bus from USC</div><div class="v" id="f-bus">Departure time TBA</div><div class="s" id="f-pickup">Pickup spot to be announced</div></div>
         <div class="reveal"><div class="eyebrow">Mandir</div><div class="v">BAPS Shri Swaminarayan Mandir</div><div class="s">15100 Fairfield Ranch Road, Chino Hills, CA 91709</div></div>
         <div class="reveal"><div class="eyebrow">Deposit</div><div class="v" id="f-dep">$5, fully refundable</div><div class="s" id="f-dep-s">Back to you when you board the bus</div></div>
@@ -518,7 +518,8 @@ img{max-width:100%}
           <h2>Save your spot on the bus</h2>
           <p id="si-seats">Seats are limited, so sign up early.</p>
           <dl class="si-facts">
-            <div><dt>Date</dt><dd>Friday, November 6, 2026</dd></div>
+            <div><dt>Date</dt><dd>Saturday, November 7, 2026</dd></div>
+            <div><dt>Sign up by</dt><dd>Tuesday, November 3</dd></div>
             <div><dt>Bus leaves USC</dt><dd id="si-depart">Time to be announced</dd></div>
             <div><dt>Pickup</dt><dd id="si-pickup">To be announced</dd></div>
             <div><dt>Deposit</dt><dd id="si-dep">$5 per person, fully refundable</dd></div>
@@ -558,7 +559,7 @@ img{max-width:100%}
 (() => {
 const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const DEF = {capacity:50, deposit:5, venmo:"", zelle:"", pickup:"", depart:"", ret:"", contact:"", contactPhone:"", policy:"", confirmed:0, open:true};
+const DEF = {capacity:80, deposit:5, venmo:"", zelle:"", pickup:"3096 McClintock Ave, Los Angeles, CA 90089", depart:"4:00 PM", ret:"", contact:"", contactPhone:"", policy:"", confirmed:0, open:true};
 const S = {info:{...DEF}, reg:null, token:null, ready:false, editing:false, fg:[], infoError:null,
   key:null, regs:[], settings:null, emailReady:false, filter:"all", q:"", tab:"list", emailOnConfirm:true, busy:new Set(), rowMsg:{}};
 
@@ -619,11 +620,11 @@ window.addEventListener("load",()=>{ load(1); load(2); }); restart();
 
 /* ---------------- countdown ---------------- */
 function targetTime(){ const m=String(S.info.depart||"").match(/(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m/i);
-  if(m){ let h=+m[1]%12; if(/p/i.test(m[3])) h+=12; return {t:Date.UTC(2026,10,6,h+8,+(m[2]||0)), lbl:"until the bus leaves USC"}; } // Nov 6 is PST (UTC-8)
-  return {t:Date.UTC(2026,10,6,8,0), lbl:"until Friday, November 6"}; }
+  if(m){ let h=+m[1]%12; if(/p/i.test(m[3])) h+=12; return {t:Date.UTC(2026,10,7,h+8,+(m[2]||0)), lbl:"until the bus leaves USC"}; } // Nov 7 is PST (UTC-8)
+  return {t:Date.UTC(2026,10,7,8,0), lbl:"until Saturday, November 7"}; }
 const cd={d:$("#cd-d"),h:$("#cd-h"),m:$("#cd-m"),s:$("#cd-s"),l:$("#cd-lbl")}; let cdLast="";
 function tick(){ const {t,lbl}=targetTime(); let ms=t-Date.now();
-  if(ms<=0){ $("#count").hidden=true; cd.l.textContent = Date.now() < Date.UTC(2026,10,7,8) ? "Happy Diwali! The celebration is today." : "Thank you for celebrating with us."; return; }
+  if(ms<=0){ $("#count").hidden=true; cd.l.textContent = Date.now() < Date.UTC(2026,10,8,8) ? "Happy Diwali! The celebration is today." : "Thank you for celebrating with us."; return; }
   const sec=Math.floor(ms/1000), v=[Math.floor(sec/86400), Math.floor(sec%86400/3600), Math.floor(sec%3600/60), sec%60];
   cd.d.textContent=v[0]; cd.h.textContent=String(v[1]).padStart(2,"0"); cd.m.textContent=String(v[2]).padStart(2,"0"); cd.s.textContent=String(v[3]).padStart(2,"0");
   if(cdLast!==lbl){ cd.l.textContent=lbl; cdLast=lbl; } }
@@ -638,8 +639,8 @@ addEventListener("scroll",()=>{ if(sTick) return; sTick=true; requestAnimationFr
    }); },{passive:true});
 
 /* ---------------- seat counter tween ---------------- */
-let seatShown=0, seatAnim;
-function tweenSeats(to, cap){ cancelAnimationFrame(seatAnim); const from=seatShown, t0=performance.now(), dur=reduce?0:900;
+let seatShown=0, seatCap=0, seatAnim;
+function tweenSeats(to, cap){ cancelAnimationFrame(seatAnim); seatCap=cap; const from=seatShown, t0=performance.now(), dur=reduce?0:900;
   const step=now=>{ const k=dur?Math.min(1,(now-t0)/dur):1, e=1-Math.pow(1-k,3), v=Math.round(from+(to-from)*e); seatShown=v;
     $("#seat-text").textContent=`${v} of ${cap} bus seats confirmed`; if(k<1) seatAnim=requestAnimationFrame(step); };
   seatAnim=requestAnimationFrame(step); }
@@ -648,7 +649,9 @@ function tweenSeats(to, cap){ cancelAnimationFrame(seatAnim); const from=seatSho
 const MAXG=3;
 const party = r => 1 + ((r && Array.isArray(r.guests)) ? r.guests.length : 0);
 const dep = () => (S.info.deposit===0 ? 0 : (+S.info.deposit||5));
-const seatsLeft = () => Math.max(0,(+S.info.capacity||50)-(+S.info.confirmed||0));
+const seatsLeft = () => Math.max(0,(+S.info.capacity||DEF.capacity)-(+S.info.confirmed||0));
+// Must match SIGNUP_DEADLINE in lib/core.js: the end of Tuesday, Nov 3 in Los Angeles (PST)
+const signupsClosed = () => Date.now() >= Date.UTC(2026,10,4,8);
 const DEFAULT_POLICY="You get it back when you check in on the bus, or if you cancel by Thursday, Nov 5.";
 const policyText = () => (S.info.policy||"").trim() || DEFAULT_POLICY;
 const RM={same:"Same account I pay from",venmo:"Venmo",zelle:"Zelle",paypal:"PayPal"};
@@ -681,7 +684,7 @@ function ticketPNG(reg, t){
   x.fillStyle="#f7941d"; x.fillRect(0,0,W,8);
   try{ if(logoImg.complete && logoImg.naturalWidth) x.drawImage(logoImg,40,36,78,100); }catch{}
   x.fillStyle="#1f1b17"; x.font="400 40px "+SERIF; x.fillText("Diwali at BAPS Chino Hills",146,88);
-  x.fillStyle="#615950"; x.font="400 22px "+SERIF; x.fillText("USC student trip · Friday, November 6, 2026",146,124);
+  x.fillStyle="#615950"; x.font="400 22px "+SERIF; x.fillText("USC student trip · Saturday, November 7, 2026",146,124);
   x.strokeStyle="#ebe4dc"; x.setLineDash([8,8]); x.beginPath(); x.moveTo(40,170); x.lineTo(W-40,170); x.stroke(); x.setLineDash([]);
   drawQR(x, qrPayload(reg,t), 160, 200, 400);
   x.textAlign="center"; x.fillStyle="#1f1b17"; x.font="400 38px "+SERIF; x.fillText((reg.name||"")+(n>1?`  +${n-1}`:""),W/2,668);
@@ -695,15 +698,15 @@ function ticketPNG(reg, t){
 
 /* ---------------- seats + facts ---------------- */
 function renderInfo(){
-  const I=S.info, cap=Math.max(1,+I.capacity||50), n=Math.min(+I.confirmed||0,cap);
-  if(n!==seatShown || !renderInfo.done) tweenSeats(n,cap); renderInfo.done=true;
+  const I=S.info, cap=Math.max(1,+I.capacity||DEF.capacity), n=Math.min(+I.confirmed||0,cap);
+  if(n!==seatShown || cap!==seatCap || !renderInfo.done) tweenSeats(n,cap); renderInfo.done=true;
   $("#seat-left").textContent = n>=cap ? "Waitlist open" : `${cap-n} left`;
   $("#seat-bar").style.width=(n/cap*100)+"%";
   $("#f-bus").textContent = I.depart ? `Leaves ${I.depart}` : "Departure time TBA";
   $("#f-pickup").textContent = (I.pickup || "Pickup spot to be announced") + (I.ret ? ` · back ${I.ret}` : "");
   $("#f-dep").textContent = `$${dep()}, fully refundable`;
   const left=Math.max(0,cap-n);
-  $("#si-seats").textContent = left ? `${left} of ${cap} seats left. Sign up early; seats are first come, first served.` : "The bus is full right now. Sign up to join the waitlist.";
+  $("#si-seats").textContent = signupsClosed() ? "Sign-ups closed on Tuesday, November 3." : left ? `${left} of ${cap} seats left. Sign up early; seats are first come, first served.` : "The bus is full right now. Sign up to join the waitlist.";
   $("#si-depart").textContent = I.depart || "Time to be announced";
   $("#si-pickup").textContent = I.pickup || "To be announced";
   $("#si-dep").textContent = `$${dep()} per person, fully refundable`;
@@ -728,10 +731,13 @@ function saveToken(t){ S.token=t||null; try{ t?localStorage.setItem(TOKEN_KEY,t)
 function download(blob, name){ const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000); }
 
 /* ---------------- registrant panel ---------------- */
+const LOST_HTML=`<div class="lost"><button type="button" class="linkbtn" id="lost-btn">Already registered? Get your link by email</button>
+    <form id="lost-form" class="lost-form" hidden novalidate><input id="lost-email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" placeholder="Email you registered with" aria-label="Email you registered with"><button class="btn ghost sm" type="submit">Send my link</button></form></div>`;
 function renderPanel(force){
   const p=$("#panel"), r=S.reg, t=r&&r.ticket;
   const key = !S.ready ? "loading" : (!r||r.cancelled) ? "form" : S.editing ? "edit" : t ? "ticket" : r.waitlist ? "wait" : "pending";
   if(!force && (key==="form"||key==="edit") && $("#reg") && S.panelKey===key){ updateTotal(); return; } // keep what they're typing
+  if(!force && key==="form" && S.panelKey==="form" && signupsClosed()) return; // keep the lost-link box open
   if(!force && key===S.panelKey && key!=="form" && key!=="edit" && key!=="loading") return; // nothing changed
   if(S.panelKey && S.panelKey!==key && key!=="loading"){ p.classList.remove("enter"); void p.offsetWidth; p.classList.add("enter"); }
   S.panelKey=key;
@@ -740,6 +746,11 @@ function renderPanel(force){
   p.innerHTML=formView(key==="edit"?r:null, !!(r&&r.cancelled)); wireForm();
 }
 function formView(r, wasCancelled){
+  if(!r && signupsClosed()) return `
+  <div class="eyebrow">Sign-ups closed</div>
+  <h2 style="margin-top:6px">Sign-ups have closed</h2>
+  <p class="notice">The deadline to sign up for the bus was Tuesday, November 3.</p>
+  ${LOST_HTML}`;
   const full = seatsLeft()<=0;
   S.fg = (r?.guests||[]).slice(0,MAXG);
   let note="";
@@ -772,8 +783,7 @@ function formView(r, wasCancelled){
     </div>
     <p class="notice bad" id="f-error" hidden></p>
   </form>
-  ${r ? "" : `<div class="lost"><button type="button" class="linkbtn" id="lost-btn">Already registered? Get your link by email</button>
-    <form id="lost-form" class="lost-form" hidden novalidate><input id="lost-email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" placeholder="Email you registered with" aria-label="Email you registered with"><button class="btn ghost sm" type="submit">Send my link</button></form></div>`}`;
+  ${r ? "" : LOST_HTML}`;
 }
 function guestsHTML(){ return S.fg.map((g,i)=>`<div class="field" id="w-g${i}"><label for="f-g${i}">Guest ${i+1} full name</label><input id="f-g${i}" autocomplete="off" maxlength="80" value="${esc(g)}"><span class="msg" hidden></span></div>`).join(""); }
 function readGuests(){ S.fg=S.fg.map((g,i)=>{ const el=$("#f-g"+i); return el?el.value:g; }); }
@@ -852,6 +862,13 @@ function liveCheck(id, check, fmt){ const el=$("#f-"+id); if(!el) return; let t,
   el.addEventListener("blur",()=>{ clearTimeout(t); if(el.value.trim()){ touched=true; run(); } }); }
 function setErr(id,msg){ const w=$("#w-"+id); if(!w) return; w.classList.toggle("err",!!msg); const m=w.querySelector(".msg"); if(m){ m.hidden=!msg; m.textContent=msg||""; } }
 function wireForm(){
+  const lb=$("#lost-btn"), lf=$("#lost-form");
+  if(lb) lb.onclick=()=>{ lf.hidden=!lf.hidden; if(!lf.hidden) $("#lost-email").focus(); };
+  if(lf) lf.onsubmit=async e=>{ e.preventDefault(); const em=$("#lost-email").value.trim();
+    if(emailError(em)){ toast(emailError(em)); return; }
+    const b=lf.querySelector("button"); b.disabled=true;
+    try{ await api("/api/me",{body:{action:"lookup", email:em}}); toast("If that email is registered, your link is on its way."); lf.hidden=true; }
+    catch(err){ toast(err.message); } b.disabled=false; };
   const f=$("#reg"); if(!f) return;
   const ce=$("#f-cancel-edit"); if(ce) ce.onclick=()=>{ S.editing=false; renderPanel(true); };
   updateTotal();
@@ -861,13 +878,6 @@ function wireForm(){
   $("#f-party").onchange=e=>{ readGuests(); const n=+e.target.value;
     S.fg = n<=S.fg.length ? S.fg.slice(0,n) : S.fg.concat(Array(n-S.fg.length).fill(""));
     $("#guests").innerHTML=guestsHTML(); updateTotal(); };
-  const lb=$("#lost-btn"), lf=$("#lost-form");
-  if(lb) lb.onclick=()=>{ lf.hidden=!lf.hidden; if(!lf.hidden) $("#lost-email").focus(); };
-  if(lf) lf.onsubmit=async e=>{ e.preventDefault(); const em=$("#lost-email").value.trim();
-    if(emailError(em)){ toast(emailError(em)); return; }
-    const b=lf.querySelector("button"); b.disabled=true;
-    try{ await api("/api/me",{body:{action:"lookup", email:em}}); toast("If that email is registered, your link is on its way."); lf.hidden=true; }
-    catch(err){ toast(err.message); } b.disabled=false; };
   f.onsubmit=async ev=>{
     ev.preventDefault();
     const val=id=>$("#f-"+id).value.trim();
@@ -941,7 +951,7 @@ function renderLogin(msg){
 }
 function renderOrg(){
   if(!S.key){ renderLogin(); return; }
-  const c=counts(), cap=+S.info.capacity||50, I=S.settings||S.info;
+  const c=counts(), cap=+S.info.capacity||DEF.capacity, I=S.settings||S.info;
   const needsPay = !I.venmo && !I.zelle;
   $("#org").innerHTML=`
     <div class="org-head"><div><div class="eyebrow" style="color:var(--saffron-ink)">Organizer</div><h2 style="margin:4px 0 0">Bus sign-ups</h2></div>
@@ -979,7 +989,7 @@ function renderOrg(){
   $("#org").querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{ S.tab=b.dataset.tab; stopScan(); renderOrg(); });
   S.tab==="list" ? renderList() : renderCheckin();
 }
-function renderOrgStatsOnly(){ const c=counts(), cap=+S.info.capacity||50, n=document.querySelectorAll(".stats .n"); if(n.length===4){ n[0].innerHTML=`${c.s.confirmed+c.s.in}<small> / ${cap}</small>`; n[1].textContent=c.s.pending; n[2].textContent=c.s.waitlist; n[3].textContent=c.s.in; } }
+function renderOrgStatsOnly(){ const c=counts(), cap=+S.info.capacity||DEF.capacity, n=document.querySelectorAll(".stats .n"); if(n.length===4){ n[0].innerHTML=`${c.s.confirmed+c.s.in}<small> / ${cap}</small>`; n[1].textContent=c.s.pending; n[2].textContent=c.s.waitlist; n[3].textContent=c.s.in; } }
 function renderList(){
   const body=$("#tabbody"); const F=["all","pending","confirmed","in","waitlist","cancelled"];
   body.innerHTML=`
